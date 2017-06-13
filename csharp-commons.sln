@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaVE.Commons", "KaVE.Commons\KaVE.Commons.csproj", "{FAAC854F-D22D-4EAE-9D19-1921C4EA63FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaVE.Commons.Tests", "KaVE.Commons.Tests\KaVE.Commons.Tests.csproj", "{FC829D87-127A-498B-965C-9778D223792E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaVE.Commons.TestUtils", "KaVE.Commons.TestUtils\KaVE.Commons.TestUtils.csproj", "{126607DB-1F9F-4E2C-A39E-7B707874EAFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{FAAC854F-D22D-4EAE-9D19-1921C4EA63FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAAC854F-D22D-4EAE-9D19-1921C4EA63FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAAC854F-D22D-4EAE-9D19-1921C4EA63FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC829D87-127A-498B-965C-9778D223792E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC829D87-127A-498B-965C-9778D223792E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC829D87-127A-498B-965C-9778D223792E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC829D87-127A-498B-965C-9778D223792E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{126607DB-1F9F-4E2C-A39E-7B707874EAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{126607DB-1F9F-4E2C-A39E-7B707874EAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{126607DB-1F9F-4E2C-A39E-7B707874EAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{126607DB-1F9F-4E2C-A39E-7B707874EAFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
