@@ -72,6 +72,7 @@
     <Compile Include="Model\Naming\NameFixture.cs" />
     <Compile Include="Model\Naming\TestNameFactory.cs" />
     <Compile Include="Model\Naming\VsComponentNameTestFactory.cs" />
+    <Compile Include="Model\SSTs\SSTFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRunnerLogger.cs" />
     <Compile Include="ToStringAssert.cs" />
