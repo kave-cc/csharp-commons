@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+    <metadata>
+        <id>KaVE.TestCommons</id>
+        <version>0.0.0</version><!-- must be set as parameter -->
+
+        <description>Common test utils of the KaVE project.</description>
+        <authors>KaVE Team</authors>
+        <owners>KaVE Team</owners>
+        <copyright>Copyright 2013-2017</copyright>
+    
+        <projectUrl>http://kave.cc/</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/kave-cc/resources/master/images/logo-nuget.png</iconUrl>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.txt</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        
+        <dependencies>
+            <dependency id="KaVE.Commons" version="$version$" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="KaVE.Commons.TestUtils\bin\Debug\KaVE.Commons.TestUtils.dll" target="lib\KaVE.Commons.TestUtils.dll" />
+    </files>
+</package>

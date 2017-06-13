@@ -1,0 +1,35 @@
+@echo off
+::
+::
+:: this is the example, copy it and name the copy "package-and-deploy.bat"
+::
+::
+
+:: this picks the first .csproj or .nuspec file in the working directory and builds a .nupkg from it
+:: to package a specific project or file, add the .csproj or .nupkg file name after the pack option
+
+set TIME1=%time::=%
+set TIME2=%TIME1: =0%
+set TIME3=%TIME2:~0,-3%
+::echo %TIME2%
+
+::english system
+set DATE1=%date:~-4,4%%date:~-10,2%%date:~-7,2%
+::german system
+::set DATE1=%date:~-4,4%%date:~-10,2%%date:~-7,2%
+::echo %DATE1%
+
+set TARGET=C:\Users\seb2\stuff\LocalNuGetFeed\
+set TIMESTAMP=%DATE1%-%TIME3%
+
+echo Building KaVE.Commons @ %TIMESTAMP%...
+nuget.exe pack KaVE.Commons.nuspec -Verbosity detailed -Version 1.0.0-v%TIMESTAMP%
+
+echo Building KaVE.TestCommons @ %TIMESTAMP%...
+nuget.exe pack KaVE.TestCommons.nuspec -Verbosity detailed -Version 1.0.0-v%TIMESTAMP%
+
+
+echo Deploying into: %TARGET%
+move *.nupkg %TARGET%
+
+pause
