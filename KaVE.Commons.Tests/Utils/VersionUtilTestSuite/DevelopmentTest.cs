@@ -21,6 +21,7 @@ using NUnit.Framework;
 namespace KaVE.Commons.Tests.Utils.VersionUtilTestSuite
 {
     // TODO @seb: create abstract super class for the three different product version tests
+    [Ignore("solve in FeedBaG related projects")]
     internal class DevelopmentTest
     {
         [Test]
@@ -55,6 +56,8 @@ namespace KaVE.Commons.Tests.Utils.VersionUtilTestSuite
             Assert.True(actual.EndsWith("-Development"));
         }
 
-        private class ExtendedVersionUtilInAssemblyWithoutVersion : VersionUtil {}
+        private class ExtendedVersionUtilInAssemblyWithoutVersion : VersionUtil
+        {
+        }
     }
 }

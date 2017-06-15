@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+using System.IO;
 using Antlr4.Runtime;
 using KaVE.Commons.Utils.Assertion;
 
@@ -24,7 +25,9 @@ namespace KaVE.Commons.Model.Naming.Impl.v1.Parser
         private class MyErrorListener : IAntlrErrorListener<int>, IAntlrErrorListener<IToken>
         {
             public bool HasError;
-            public void SyntaxError(IRecognizer recognizer,
+
+            public void SyntaxError(TextWriter tw,
+                IRecognizer recognizer,
                 IToken offendingSymbol,
                 int line,
                 int charPositionInLine,
@@ -34,7 +37,8 @@ namespace KaVE.Commons.Model.Naming.Impl.v1.Parser
                 HasError = true;
             }
 
-            public void SyntaxError(IRecognizer recognizer,
+            public void SyntaxError(TextWriter tw,
+                IRecognizer recognizer,
                 int offendingSymbol,
                 int line,
                 int charPositionInLine,
@@ -48,8 +52,8 @@ namespace KaVE.Commons.Model.Naming.Impl.v1.Parser
 
         public static TypeNamingParser.TypeContext ValidateTypeName(string input)
         {
-            MyErrorListener el = new MyErrorListener();
-            TypeNamingParser parser = SetupParser(input, el);
+            var el = new MyErrorListener();
+            var parser = SetupParser(input, el);
             var typeEOL = parser.typeEOL();
             Asserts.Not(el.HasError, "Syntax Error: " + input);
             return typeEOL.type();
@@ -57,9 +61,9 @@ namespace KaVE.Commons.Model.Naming.Impl.v1.Parser
 
         public static TypeNamingParser.MethodContext ValidateMethodName(string input)
         {
-            MyErrorListener el = new MyErrorListener();
-            TypeNamingParser parser = SetupParser(input, el);
-            var methodEol= parser.methodEOL();
+            var el = new MyErrorListener();
+            var parser = SetupParser(input, el);
+            var methodEol = parser.methodEOL();
             Asserts.Not(el.HasError, "Syntax Error: " + input);
             return methodEol.method();
         }
@@ -70,8 +74,8 @@ namespace KaVE.Commons.Model.Naming.Impl.v1.Parser
             var lexer = new TypeNamingLexer(inputStream);
             lexer.RemoveErrorListeners();
             lexer.AddErrorListener(el);
-            CommonTokenStream tokens = new CommonTokenStream(lexer);
-            TypeNamingParser parser = new TypeNamingParser(tokens);
+            var tokens = new CommonTokenStream(lexer);
+            var parser = new TypeNamingParser(tokens);
             parser.RemoveErrorListeners();
             parser.AddErrorListener(el);
             return parser;
@@ -79,8 +83,8 @@ namespace KaVE.Commons.Model.Naming.Impl.v1.Parser
 
         public static TypeNamingParser.NamespaceContext ValidateNamespaceName(string input)
         {
-            MyErrorListener el = new MyErrorListener();
-            TypeNamingParser parser = SetupParser(input, el);
+            var el = new MyErrorListener();
+            var parser = SetupParser(input, el);
             var namespaceEol = parser.namespaceEOL();
             Asserts.Not(el.HasError, "Syntax Error: " + input);
             return namespaceEol.@namespace();
@@ -88,8 +92,8 @@ namespace KaVE.Commons.Model.Naming.Impl.v1.Parser
 
         public static TypeNamingParser.AssemblyContext ValidateAssemblyName(string input)
         {
-            MyErrorListener el = new MyErrorListener();
-            TypeNamingParser parser = SetupParser(input, el);
+            var el = new MyErrorListener();
+            var parser = SetupParser(input, el);
             var namespaceEol = parser.assemblyEOL();
             Asserts.Not(el.HasError, "Syntax Error: " + input);
             return namespaceEol.assembly();
@@ -97,8 +101,8 @@ namespace KaVE.Commons.Model.Naming.Impl.v1.Parser
 
         public static TypeNamingParser.FormalParamContext ValidateParameterName(string input)
         {
-            MyErrorListener el = new MyErrorListener();
-            TypeNamingParser parser = SetupParser(input, el);
+            var el = new MyErrorListener();
+            var parser = SetupParser(input, el);
             var parameterEol = parser.parameterNameEOL();
             Asserts.Not(el.HasError, "Syntax Error: " + input);
             return parameterEol.formalParam();
@@ -106,8 +110,8 @@ namespace KaVE.Commons.Model.Naming.Impl.v1.Parser
 
         public static TypeNamingParser.MemberNameContext ValidateMemberName(string input)
         {
-            MyErrorListener el = new MyErrorListener();
-            TypeNamingParser parser = SetupParser(input, el);
+            var el = new MyErrorListener();
+            var parser = SetupParser(input, el);
             var memberNameEol = parser.memberNameEOL();
             Asserts.Not(el.HasError, "Syntax Error: " + input);
             return memberNameEol.memberName();
@@ -115,8 +119,8 @@ namespace KaVE.Commons.Model.Naming.Impl.v1.Parser
 
         public static TypeNamingParser.LambdaNameContext ValidateLambdaName(string input)
         {
-            MyErrorListener el = new MyErrorListener();
-            TypeNamingParser parser = SetupParser(input, el);
+            var el = new MyErrorListener();
+            var parser = SetupParser(input, el);
             var lambdaNameEol = parser.lambdaNameEOL();
             Asserts.Not(el.HasError, "Syntax Error: " + input);
             return lambdaNameEol.lambdaName();

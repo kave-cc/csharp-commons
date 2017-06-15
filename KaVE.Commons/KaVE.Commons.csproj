@@ -8,8 +8,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KaVE.Commons</RootNamespace>
     <AssemblyName>KaVE.Commons</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -19,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -27,10 +29,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr4.Runtime">
-      <HintPath>..\3rd-party\Antlr4.Runtime.dll</HintPath>
+    <Reference Include="Antlr4.Runtime.Standard, Version=4.7.0.0, Culture=neutral, PublicKeyToken=e78b2c5abd1fcb3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr4.Runtime.Standard.4.7.1\lib\net35\Antlr4.Runtime.Standard.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.6144.33521, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.JetBrains.Stripped.0.87.20161027.6\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -103,11 +107,9 @@
     <Compile Include="Model\Naming\Impl\v1\TypeName.cs" />
     <Compile Include="Model\Naming\Impl\v1\Parser\TypeNameParseUtil.cs" />
     <Compile Include="Model\Naming\Impl\v1\Parser\TypeNamingBaseListener.cs" />
-    <Compile Include="Model\Naming\Impl\v1\Parser\TypeNamingBaseVisitor.cs" />
     <Compile Include="Model\Naming\Impl\v1\Parser\TypeNamingLexer.cs" />
     <Compile Include="Model\Naming\Impl\v1\Parser\TypeNamingListener.cs" />
     <Compile Include="Model\Naming\Impl\v1\Parser\TypeNamingParser.cs" />
-    <Compile Include="Model\Naming\Impl\v1\Parser\TypeNamingVisitor.cs" />
     <Compile Include="Model\Naming\CodeElements\ILocalVariableName.cs" />
     <Compile Include="Model\Naming\Types\IPredefinedTypeName.cs" />
     <Compile Include="Model\TypeShapes\IMemberHierarchy.cs" />
