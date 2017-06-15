@@ -13,8 +13,18 @@
         <iconUrl>https://raw.githubusercontent.com/kave-cc/resources/master/images/logo-nuget.png</iconUrl>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.txt</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+        <dependencies>
+            <!-- solution references -->
+            <!-- from packages.config -->
+            <dependency id="Antlr4.Runtime.Standard" version="4.7.1" />
+            <dependency id="DotNetZip.Reduced" version="1.9.1.8" />
+            <dependency id="Newtonsoft35.Json" version="7.0.1" />
+            <dependency id="SharpZipLib.JetBrains.Stripped" version="0.87.20161027.6" />
+            <!-- from 3rd-party/non-NuGet? we have to repackage them in the files section -->
+        </dependencies>
     </metadata>
     <files>
-        <file src="KaVE.Commons\bin\Debug\KaVE.Commons.dll" target="lib\KaVE.Commons.dll" />
+        <file src="..\KaVE.Commons\bin\Debug\KaVE.Commons.dll" target="lib\KaVE.Commons.dll" />
     </files>
 </package>

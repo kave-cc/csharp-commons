@@ -15,10 +15,15 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         
         <dependencies>
+            <!-- solution references -->
             <dependency id="KaVE.Commons" version="$version$" />
-        </dependencies>
+            <!-- from packages.config -->
+            <dependency id="Moq" version="4.2.1507.0118" />
+            <dependency id="NUnit" version="2.6.4" />
+            <!-- from 3rd-party/non-NuGet? we have to repackage them in the files section -->
+       </dependencies>
     </metadata>
     <files>
-        <file src="KaVE.Commons.TestUtils\bin\Debug\KaVE.Commons.TestUtils.dll" target="lib\KaVE.Commons.TestUtils.dll" />
+        <file src="..\KaVE.Commons.TestUtils\bin\Debug\KaVE.Commons.TestUtils.dll" target="lib\KaVE.Commons.TestUtils.dll" />
     </files>
 </package>
