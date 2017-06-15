@@ -2,7 +2,7 @@
 <package >
     <metadata>
         <id>KaVE.Commons</id>
-        <version>0.0.0</version><!-- must be set as parameter -->
+        <version>$version$</version>
 
         <description>Common data structures and utils of the KaVE project.</description>
         <authors>KaVE Team</authors>

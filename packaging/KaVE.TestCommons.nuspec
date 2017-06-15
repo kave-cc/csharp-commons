@@ -2,7 +2,7 @@
 <package >
     <metadata>
         <id>KaVE.TestCommons</id>
-        <version>0.0.0</version><!-- must be set as parameter -->
+        <version>$version$</version>
 
         <description>Common test utils of the KaVE project.</description>
         <authors>KaVE Team</authors>
