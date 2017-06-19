@@ -1,17 +1,16 @@
-<?xml version="1.0"?>
-<package >
+<?xml version="1.0" encoding="utf-8"?>
+<package>
     <metadata>
         <id>KaVE.Commons</id>
         <version>$version$</version>
 
         <description>Common data structures and utils of the KaVE project.</description>
         <authors>KaVE Team</authors>
-        <owners>KaVE Team</owners>
-        <copyright>Copyright 2013-2017</copyright>
+        <copyright>Copyright 2011-2017</copyright>
     
         <projectUrl>http://kave.cc/</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/kave-cc/resources/master/images/logo-nuget.png</iconUrl>
-        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.txt</licenseUrl>
+        <licenseUrl>https://github.com/kave-cc/resources/blob/master/LICENSE</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
         <dependencies>
