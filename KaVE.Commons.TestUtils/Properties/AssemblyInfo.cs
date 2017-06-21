@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -24,7 +25,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("KaVE.Commons.TestUtils")]
-[assembly: AssemblyCopyright("Copyright © TU Darmstadt 2013-2015")]
+[assembly: AssemblyCopyright("Copyright © KaVE Project 2011-2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -36,15 +37,6 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("61a6224e-e66e-4b8a-b98f-c5a9cc0dca3f")]
 
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+// our syntax: 0.0.<build-num>[-<variant>], see KaVE.Utils.VersionUtil
+[assembly: AssemblyVersion("0.0.0")]
+[assembly: AssemblyInformationalVersion("0.0.0-Development")]
