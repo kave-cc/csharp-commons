@@ -16,6 +16,7 @@
 
 using System;
 using KaVE.Commons.Model;
+using KaVE.Commons.Utils.Assertion;
 using NUnit.Framework;
 
 namespace KaVE.Commons.Tests.Model
@@ -23,51 +24,28 @@ namespace KaVE.Commons.Tests.Model
     public class KaVEVersionTest
     {
         [Test]
-        public void DefaultValues()
+        public void Init_WithValues()
         {
-            var sut = new KaVEVersion();
-            Assert.AreEqual(new Version(0, 0), sut.Version);
-            Assert.AreEqual(Variant.Unknown, sut.Variant);
-            Assert.AreEqual(0, sut.KaVEVersionNumber);
-            Assert.AreNotEqual(0, sut.GetHashCode());
-            Assert.AreNotEqual(1, sut.GetHashCode());
-        }
-
-        [Test]
-        public void SettingValues()
-        {
-            var sut = new KaVEVersion
-            {
-                KaVEVersionNumber = 123,
-                Variant = Variant.Development
-            };
+            var sut = new KaVEVersion(123, Variant.Development);
             Assert.AreEqual(new Version(0, 123), sut.Version);
             Assert.AreEqual(Variant.Development, sut.Variant);
-            Assert.AreEqual(123, sut.KaVEVersionNumber);
+            Assert.AreEqual(123, sut.ReleaseNumber);
         }
 
         [Test]
-        public void Equality_Default()
+        public void Init_WithString()
         {
-            var a = new KaVEVersion();
-            var b = new KaVEVersion();
-            Assert.AreEqual(a, b);
-            Assert.AreEqual(a.GetHashCode(), b.GetHashCode());
+            var sut = new KaVEVersion("0.123-Development");
+            Assert.AreEqual(new Version(0, 123), sut.Version);
+            Assert.AreEqual(Variant.Development, sut.Variant);
+            Assert.AreEqual(123, sut.ReleaseNumber);
         }
 
         [Test]
         public void Equality_ReallyTheSame()
         {
-            var a = new KaVEVersion
-            {
-                KaVEVersionNumber = 123,
-                Variant = Variant.Development
-            };
-            var b = new KaVEVersion
-            {
-                KaVEVersionNumber = 123,
-                Variant = Variant.Development
-            };
+            var a = new KaVEVersion(123, Variant.Development);
+            var b = new KaVEVersion(123, Variant.Development);
             Assert.AreEqual(a, b);
             Assert.AreEqual(a.GetHashCode(), b.GetHashCode());
         }
@@ -75,11 +53,8 @@ namespace KaVE.Commons.Tests.Model
         [Test]
         public void Equality_DifferentVersionNumber()
         {
-            var a = new KaVEVersion
-            {
-                KaVEVersionNumber = 123
-            };
-            var b = new KaVEVersion();
+            var a = new KaVEVersion(123, Variant.Development);
+            var b = new KaVEVersion(234, Variant.Development);
             Assert.AreNotEqual(a, b);
             Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode());
         }
@@ -87,11 +62,8 @@ namespace KaVE.Commons.Tests.Model
         [Test]
         public void Equality_DifferentVariant()
         {
-            var a = new KaVEVersion
-            {
-                Variant = Variant.Development
-            };
-            var b = new KaVEVersion();
+            var a = new KaVEVersion(123, Variant.Development);
+            var b = new KaVEVersion(123, Variant.Default);
             Assert.AreNotEqual(a, b);
             Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode());
         }
@@ -99,12 +71,40 @@ namespace KaVE.Commons.Tests.Model
         [Test]
         public void ToStringIsImplemented()
         {
-            var sut = new KaVEVersion
-            {
-                Variant = Variant.Development,
-                KaVEVersionNumber = 1234
-            };
+            var sut = new KaVEVersion(1234, Variant.Development);
             Assert.AreEqual("0.1234-Development", sut.ToString());
+        }
+
+        [Test]
+        [ExpectedException(typeof(AssertException))]
+        public void Parsing_ParameterValidation_null()
+        {
+            // ReSharper disable once ObjectCreationAsStatement
+            new KaVEVersion(null);
+        }
+
+        [Test]
+        [ExpectedException(typeof(AssertException))]
+        public void Parsing_ParameterValidation_empty()
+        {
+            // ReSharper disable once ObjectCreationAsStatement
+            new KaVEVersion("");
+        }
+
+        [Test]
+        [ExpectedException(typeof(AssertException))]
+        public void Parsing_ParameterValidation_invalid()
+        {
+            // ReSharper disable once ObjectCreationAsStatement
+            new KaVEVersion("abc");
+        }
+
+        [Test]
+        public void Parsing_Roundtrip()
+        {
+            var actual = new KaVEVersion("0.123-Development");
+            var expected = new KaVEVersion(123, Variant.Development);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

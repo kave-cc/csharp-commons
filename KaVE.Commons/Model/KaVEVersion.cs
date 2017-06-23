@@ -15,16 +15,18 @@
  */
 
 using System;
+using System.Text.RegularExpressions;
 using KaVE.Commons.Utils;
+using KaVE.Commons.Utils.Assertion;
 
 namespace KaVE.Commons.Model
 {
     // ReSharper disable once InconsistentNaming
     public interface IKaVEVersion
     {
-        Version Version { get; }
+        int ReleaseNumber { get; }
         Variant Variant { get; }
-        int KaVEVersionNumber { get; }
+        Version Version { get; }
     }
 
     public enum Variant
@@ -37,13 +39,31 @@ namespace KaVE.Commons.Model
 
     public class KaVEVersion : IKaVEVersion
     {
-        public Version Version
+        private static readonly Regex VersionExpr = new Regex("^0\\.(\\d+)-(\\w+)$");
+
+        public KaVEVersion(int releaseNumber, Variant variant)
         {
-            get { return new Version(0, KaVEVersionNumber); }
+            ReleaseNumber = releaseNumber;
+            Variant = variant;
         }
 
-        public Variant Variant { get; set; }
-        public int KaVEVersionNumber { get; set; }
+        public KaVEVersion(string versionStr)
+        {
+            Asserts.Not(string.IsNullOrEmpty(versionStr));
+
+            var res = VersionExpr.Match(versionStr);
+            Asserts.That(res.Success);
+
+            ReleaseNumber = int.Parse(res.Groups[1].ToString());
+            Variant = (Variant) Enum.Parse(typeof(Variant), res.Groups[2].ToString());
+        }
+
+        public int ReleaseNumber { get; private set; }
+        public Variant Variant { get; private set; }
+        public Version Version
+        {
+            get { return new Version(0, ReleaseNumber); }
+        }
 
         public override bool Equals(object obj)
         {
@@ -52,7 +72,7 @@ namespace KaVE.Commons.Model
 
         protected bool Equals(KaVEVersion other)
         {
-            return Variant == other.Variant && KaVEVersionNumber == other.KaVEVersionNumber;
+            return Variant == other.Variant && ReleaseNumber == other.ReleaseNumber;
         }
 
         public override int GetHashCode()
@@ -60,14 +80,14 @@ namespace KaVE.Commons.Model
             unchecked
             {
                 var hashCode = 397;
-                hashCode = hashCode ^ ((int) Variant*397);
-                return hashCode ^ KaVEVersionNumber;
+                hashCode = hashCode ^ ((int) Variant * 397);
+                return hashCode ^ ReleaseNumber;
             }
         }
 
         public override string ToString()
         {
-            return "0.{0}-{1}".FormatEx(KaVEVersionNumber, Variant);
+            return "0.{0}-{1}".FormatEx(ReleaseNumber, Variant);
         }
     }
 }
