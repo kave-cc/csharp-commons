@@ -32,7 +32,10 @@ namespace KaVE.Commons.Model
     public enum Variant
     {
         Unknown,
-        Development,
+        Development, // in-IDE
+        Experimental, // build-server on feature branch
+        Release, // officially released version
+        // legacy (to be removed):
         Default,
         Datev
     }
