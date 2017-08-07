@@ -134,6 +134,7 @@
     <Compile Include="Utils\CultureUtilsTest.cs" />
     <Compile Include="Utils\Json\JsonSerializationSuite\CompletionEventSuite\NamingSerializationTest.cs" />
     <Compile Include="Utils\Json\JsonSerializationSuite\DateTimeSerializationTest.cs" />
+    <Compile Include="Utils\Json\JsonSerializationSuite\VersionControlEventSerializationTest.cs" />
     <Compile Include="Utils\Naming\AnonymousNameUtilsTest.cs" />
     <Compile Include="Utils\Naming\NameSerializationTest.cs" />
     <Compile Include="Model\Naming\NamesTest.cs" />
