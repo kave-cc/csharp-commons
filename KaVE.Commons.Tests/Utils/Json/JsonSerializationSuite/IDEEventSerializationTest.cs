@@ -52,12 +52,12 @@ namespace KaVE.Commons.Tests.Utils.Json.JsonSerializationSuite
                 Duration = new TimeSpan(0, 0, 1),
                 IDESessionUUID = "0xDEADBEEF",
                 KaVEVersion = "1.2.3.4",
-                TriggeredAt = new System.DateTime(2010, 01, 01, 12, 30, 44),
+                TriggeredAt = new DateTimeOffset(2010, 01, 01, 12, 30, 44, TimeSpan.FromHours(3)),
                 TriggeredBy = EventTrigger.Click
             };
 
             const string expected =
-                "{\"$type\":\"KaVE.Commons.TestUtils.Model.Events.TestIDEEvent, KaVE.Commons.TestUtils\",\"IDESessionUUID\":\"0xDEADBEEF\",\"KaVEVersion\":\"1.2.3.4\",\"TriggeredAt\":\"2010-01-01T12:30:44\",\"TriggeredBy\":1,\"Duration\":\"00:00:01\",\"ActiveWindow\":\"0Win:w SomeWindow\",\"ActiveDocument\":\"0Doc:d SomeDocument\"}";
+                "{\"$type\":\"KaVE.Commons.TestUtils.Model.Events.TestIDEEvent, KaVE.Commons.TestUtils\",\"IDESessionUUID\":\"0xDEADBEEF\",\"KaVEVersion\":\"1.2.3.4\",\"TriggeredAt\":\"2010-01-01T12:30:44+03:00\",\"TriggeredBy\":1,\"Duration\":\"00:00:01\",\"ActiveWindow\":\"0Win:w SomeWindow\",\"ActiveDocument\":\"0Doc:d SomeDocument\"}";
 
             JsonAssert.SerializesTo(ideEvent, expected);
         }
@@ -65,8 +65,8 @@ namespace KaVE.Commons.Tests.Utils.Json.JsonSerializationSuite
         [Test]
         public void ShouldDeserializeFromWithDurationSet()
         {
-            var triggeredAt = new System.DateTime(2014, 5, 5, 12, 0, 2, 69, DateTimeKind.Local);
-            var terminatedAt = new System.DateTime(2014, 5, 5, 12, 0, 7, 69, DateTimeKind.Local);
+            var triggeredAt = new DateTimeOffset(2014, 5, 5, 12, 0, 2, 69, TimeSpan.FromHours(2));
+            var terminatedAt = new DateTimeOffset(2014, 5, 5, 12, 0, 7, 69, TimeSpan.FromHours(2));
             var duration = TimeSpan.FromSeconds(5);
             var eventJson = "{\"TriggeredAt\":\"2014-05-05T12:00:02.069000+02:00\",\"Duration\":\"00:00:05\"}";
 

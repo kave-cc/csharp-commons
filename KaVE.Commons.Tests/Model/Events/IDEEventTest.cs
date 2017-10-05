@@ -62,8 +62,8 @@ namespace KaVE.Commons.Tests.Model.Events
             Assert.AreEqual(TimeSpan.FromDays(1), sut.Duration);
             Assert.AreEqual("2", sut.IDESessionUUID);
             Assert.AreEqual("3", sut.KaVEVersion);
-            Assert.AreEqual(DateTime.Today, sut.TerminatedAt);
-            Assert.AreEqual(DateTime.Today.AddDays(-1), sut.TriggeredAt);
+            Assert.AreEqual((DateTimeOffset)DateTime.Today, sut.TerminatedAt);
+            Assert.AreEqual(((DateTimeOffset)DateTime.Today).AddDays(-1), sut.TriggeredAt);
             Assert.AreEqual(EventTrigger.Click, sut.TriggeredBy);
         }
 
@@ -146,7 +146,7 @@ namespace KaVE.Commons.Tests.Model.Events
         [Test]
         public void ShouldDeriveEndTimeFromStartTimeAndDuration()
         {
-            var now = DateTime.Now;
+            var now = DateTimeOffset.Now;
             var expected = now.AddSeconds(3);
             var ideEvent = new TestIDEEvent
             {
