@@ -117,6 +117,8 @@
     <Compile Include="Model\TypeShapes\PropertyHierarchy.cs" />
     <Compile Include="Utils\CultureUtils.cs" />
     <Compile Include="Utils\Exceptions\ValidationException.cs" />
+    <Compile Include="Utils\Json\Fixers\IDeserializationFixer.cs" />
+    <Compile Include="Utils\Json\Fixers\TestEventFixer.cs" />
     <Compile Include="Utils\Naming\AnonymousNameUtils.cs" />
     <Compile Include="Utils\Naming\NameSerialization.cs" />
     <Compile Include="Utils\Naming\NameSerializerBase.cs" />

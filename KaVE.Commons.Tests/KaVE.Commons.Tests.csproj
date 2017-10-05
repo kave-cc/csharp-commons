@@ -133,8 +133,10 @@
     <Compile Include="Model\TypeShapes\PropertyHierarchyTest.cs" />
     <Compile Include="Utils\CultureUtilsTest.cs" />
     <Compile Include="Utils\DateUtilsTest.cs" />
+    <Compile Include="Utils\Json\Fixers\TestEventFixerTest.cs" />
     <Compile Include="Utils\Json\JsonSerializationSuite\CompletionEventSuite\NamingSerializationTest.cs" />
     <Compile Include="Utils\Json\JsonSerializationSuite\DateTimeSerializationTest.cs" />
+    <Compile Include="Utils\Json\JsonSerializationSuite\JsonDeserializationFixerTest.cs" />
     <Compile Include="Utils\Json\JsonSerializationSuite\VersionControlEventSerializationTest.cs" />
     <Compile Include="Utils\Naming\AnonymousNameUtilsTest.cs" />
     <Compile Include="Utils\Naming\NameSerializationTest.cs" />

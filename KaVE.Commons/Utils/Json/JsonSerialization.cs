@@ -21,6 +21,7 @@ using System.Reflection;
 using System.Runtime.Serialization.Formatters;
 using System.Text;
 using KaVE.Commons.Model.Naming;
+using KaVE.Commons.Utils.Json.Fixers;
 using KaVE.JetBrains.Annotations;
 using Newtonsoft.Json;
 
@@ -116,6 +117,8 @@ namespace KaVE.Commons.Utils.Json
             return json;
         }
 
+        public static ISet<IDeserializationFixer> Fixers = new HashSet<IDeserializationFixer> {new TestEventFixer()};
+
         /// <summary>
         ///     Parses an instance of <typeparamref name="T" /> from a Json string.
         /// </summary>
@@ -127,7 +130,12 @@ namespace KaVE.Commons.Utils.Json
             var settings = CreateSerializationSettings();
             // TODO get rid of this special case handling
             json = LegacyDataUtils.UpdateLegacyDataFormats(json, settings);
-            return JsonConvert.DeserializeObject<T>(json, settings);
+            var obj = JsonConvert.DeserializeObject<T>(json, settings);
+            foreach (var f in Fixers)
+            {
+                obj = (T) f.Fix(json, obj);
+            }
+            return obj;
         }
 
         /// <summary>
@@ -141,7 +149,12 @@ namespace KaVE.Commons.Utils.Json
             var settings = CreateSerializationSettings();
             // TODO get rid of this special case handling
             json = LegacyDataUtils.UpdateLegacyDataFormats(json, settings);
-            return JsonConvert.DeserializeObject(json, type, settings);
+            var obj = JsonConvert.DeserializeObject(json, type, settings);
+            foreach (var f in Fixers)
+            {
+                obj = f.Fix(json, obj);
+            }
+            return obj;
         }
 
         /// <summary>
