@@ -14,24 +14,26 @@
  * limitations under the License.
  */
 
+using System;
+
 namespace KaVE.Commons.Utils
 {
     public interface IDateUtils
     {
-        System.DateTime Now { get; }
-        System.DateTime Today { get; }
+        DateTimeOffset Now { get; }
+        DateTimeOffset Today { get; }
     }
 
     public class DateUtils : IDateUtils
     {
-        public System.DateTime Now
+        public DateTimeOffset Now
         {
-            get { return System.DateTime.Now; }
+            get { return DateTimeOffset.Now; }
         }
 
-        public System.DateTime Today
+        public DateTimeOffset Today
         {
-            get { return System.DateTime.Today; }
+            get { return DateTime.Today; }
         }
     }
 }

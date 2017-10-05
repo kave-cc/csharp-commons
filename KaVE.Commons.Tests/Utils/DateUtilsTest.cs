@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2014 Technische Universität Darmstadt
+ * Copyright 2017 University of Zurich
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,26 @@
 
 using System;
 using KaVE.Commons.Utils;
+using NUnit.Framework;
 
-namespace KaVE.Commons.TestUtils.Utils
+namespace KaVE.Commons.Tests.Utils
 {
-    public class TestDateUtils : IDateUtils
+    internal class DateUtilsTest
     {
-        public DateTimeOffset Now { get; set; }
-        public DateTimeOffset Today { get; set; }
+        [Test]
+        public void Now_Offset()
+        {
+            var now = new DateUtils().Now;
+            var offset = now.Offset;
+            Assert.AreEqual(DateTimeOffset.Now.Offset, offset);
+        }
+
+        [Test]
+        public void Today_Offset()
+        {
+            var now = new DateUtils().Today;
+            var offset = now.Offset;
+            Assert.AreEqual(DateTimeOffset.Now.Offset, offset);
+        }
     }
 }
