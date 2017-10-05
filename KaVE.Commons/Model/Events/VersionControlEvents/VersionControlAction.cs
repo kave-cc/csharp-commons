@@ -22,7 +22,7 @@ namespace KaVE.Commons.Model.Events.VersionControlEvents
 {
     public interface IVersionControlAction
     {
-        DateTime ExecutedAt { get; set; }
+        DateTimeOffset ExecutedAt { get; set; }
         VersionControlActionType ActionType { get; set; }
     }
 
@@ -30,7 +30,7 @@ namespace KaVE.Commons.Model.Events.VersionControlEvents
     public class VersionControlAction : IVersionControlAction
     {
         [DataMember]
-        public DateTime ExecutedAt { get; set; }
+        public DateTimeOffset ExecutedAt { get; set; }
 
         [DataMember]
         public VersionControlActionType ActionType { get; set; }
@@ -50,7 +50,7 @@ namespace KaVE.Commons.Model.Events.VersionControlEvents
             unchecked
             {
                 var hashCode = ExecutedAt.GetHashCode();
-                hashCode = (hashCode*397) ^ (int) ActionType;
+                hashCode = (hashCode * 397) ^ (int) ActionType;
                 return hashCode;
             }
         }

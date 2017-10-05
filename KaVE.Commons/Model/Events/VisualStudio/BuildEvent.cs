@@ -56,9 +56,9 @@ namespace KaVE.Commons.Model.Events.VisualStudio
             unchecked
             {
                 var hashCode = base.GetHashCode();
-                hashCode = (hashCode*397) ^ (Scope != null ? Scope.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (Action != null ? Action.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (HashCodeUtils.For(397, Targets));
+                hashCode = (hashCode * 397) ^ (Scope != null ? Scope.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Action != null ? Action.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (HashCodeUtils.For(397, Targets));
                 return hashCode;
             }
         }
@@ -80,7 +80,7 @@ namespace KaVE.Commons.Model.Events.VisualStudio
         public string SolutionConfiguration { get; set; }
 
         [DataMember]
-        public DateTime? StartedAt { get; set; }
+        public DateTimeOffset? StartedAt { get; set; }
 
         [DataMember]
         public TimeSpan? Duration { get; set; }
@@ -108,12 +108,12 @@ namespace KaVE.Commons.Model.Events.VisualStudio
             unchecked
             {
                 var hashCode = (Project != null ? Project.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (ProjectConfiguration != null ? ProjectConfiguration.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (Platform != null ? Platform.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (SolutionConfiguration != null ? SolutionConfiguration.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ StartedAt.GetHashCode();
-                hashCode = (hashCode*397) ^ Duration.GetHashCode();
-                hashCode = (hashCode*397) ^ Successful.GetHashCode();
+                hashCode = (hashCode * 397) ^ (ProjectConfiguration != null ? ProjectConfiguration.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Platform != null ? Platform.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (SolutionConfiguration != null ? SolutionConfiguration.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ StartedAt.GetHashCode();
+                hashCode = (hashCode * 397) ^ Duration.GetHashCode();
+                hashCode = (hashCode * 397) ^ Successful.GetHashCode();
                 return hashCode;
             }
         }

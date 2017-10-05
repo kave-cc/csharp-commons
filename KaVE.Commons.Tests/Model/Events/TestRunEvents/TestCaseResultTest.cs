@@ -24,7 +24,7 @@ namespace KaVE.Commons.Tests.Model.Events.TestRunEvents
 {
     internal class TestCaseResultTest
     {
-        private readonly DateTime _someDateTime = DateTime.MinValue.AddSeconds(1);
+        private readonly DateTimeOffset _someDateTime = DateTimeOffset.MinValue.AddSeconds(1);
 
         [Test]
         public void DefaultValues()

@@ -32,7 +32,7 @@ namespace KaVE.Commons.Model.Events.TestRunEvents
         public string Parameters { get; set; }
 
         [DataMember]
-        public DateTime? StartTime { get; set; }
+        public DateTimeOffset? StartTime { get; set; }
 
         [DataMember]
         public TimeSpan Duration { get; set; }

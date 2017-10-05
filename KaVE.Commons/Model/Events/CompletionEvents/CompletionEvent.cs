@@ -65,7 +65,7 @@ namespace KaVE.Commons.Model.Events.CompletionEvents
 
         public void AddSelection([NotNull] IProposal proposal, int index = -1)
         {
-            var selectedAfter = DateTime.Now - TriggeredAt;
+            var selectedAfter = DateTimeOffset.Now - TriggeredAt;
             Selections.Add(new ProposalSelection {Proposal = proposal, SelectedAfter = selectedAfter, Index = index});
         }
 
@@ -87,11 +87,11 @@ namespace KaVE.Commons.Model.Events.CompletionEvents
             unchecked
             {
                 var hashCode = base.GetHashCode();
-                hashCode = (hashCode*397) ^ Context2.GetHashCode();
-                hashCode = (hashCode*397) ^ ProposalCollection.GetHashCode();
-                hashCode = (hashCode*397) ^ Selections.GetHashCode();
-                hashCode = (hashCode*397) ^ (int) TerminatedBy;
-                hashCode = (hashCode*397) ^ (int) TerminatedState;
+                hashCode = (hashCode * 397) ^ Context2.GetHashCode();
+                hashCode = (hashCode * 397) ^ ProposalCollection.GetHashCode();
+                hashCode = (hashCode * 397) ^ Selections.GetHashCode();
+                hashCode = (hashCode * 397) ^ (int) TerminatedBy;
+                hashCode = (hashCode * 397) ^ (int) TerminatedState;
                 return hashCode;
             }
         }
