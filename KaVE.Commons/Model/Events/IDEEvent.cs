@@ -36,12 +36,12 @@ namespace KaVE.Commons.Model.Events
         public string KaVEVersion { get; set; }
 
         [DataMember]
-        public DateTime? TriggeredAt { get; set; }
+        public DateTimeOffset? TriggeredAt { get; set; }
 
         [DataMember]
         public EventTrigger TriggeredBy { get; set; }
 
-        public DateTime? TerminatedAt
+        public DateTimeOffset? TerminatedAt
         {
             get { return TriggeredAt + Duration; }
             set { Duration = value - TriggeredAt; }
@@ -74,13 +74,13 @@ namespace KaVE.Commons.Model.Events
             unchecked
             {
                 var hashCode = (Id != null ? Id.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (IDESessionUUID != null ? IDESessionUUID.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (KaVEVersion != null ? KaVEVersion.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ TriggeredAt.GetHashCode();
-                hashCode = (hashCode*397) ^ (int) TriggeredBy;
-                hashCode = (hashCode*397) ^ Duration.GetHashCode();
-                hashCode = (hashCode*397) ^ (ActiveWindow != null ? ActiveWindow.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (ActiveDocument != null ? ActiveDocument.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (IDESessionUUID != null ? IDESessionUUID.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (KaVEVersion != null ? KaVEVersion.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ TriggeredAt.GetHashCode();
+                hashCode = (hashCode * 397) ^ (int) TriggeredBy;
+                hashCode = (hashCode * 397) ^ Duration.GetHashCode();
+                hashCode = (hashCode * 397) ^ (ActiveWindow != null ? ActiveWindow.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (ActiveDocument != null ? ActiveDocument.GetHashCode() : 0);
                 return hashCode;
             }
         }

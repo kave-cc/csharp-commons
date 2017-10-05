@@ -36,7 +36,7 @@ namespace KaVE.Commons.Model.Events
         /// <summary>
         ///     The moment the event is created. Defaults to the event's creation time.
         /// </summary>
-        DateTime? TriggeredAt { get; set; }
+        DateTimeOffset? TriggeredAt { get; set; }
 
         /// <summary>
         ///     The kind of action that triggered the event.
@@ -48,7 +48,7 @@ namespace KaVE.Commons.Model.Events
         ///     terminates. This property may be <code>null</code>, if the
         ///     termination of the event is not known.
         /// </summary>
-        DateTime? TerminatedAt { get; set; }
+        DateTimeOffset? TerminatedAt { get; set; }
 
         /// <summary>
         ///     The event's duration. Is <code>null</code>, iff
