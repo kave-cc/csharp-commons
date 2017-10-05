@@ -396,7 +396,6 @@
     <Compile Include="Utils\Collections\ThreadSafeDictionary.cs" />
     <Compile Include="Utils\Collections\WeakNameCache.cs" />
     <Compile Include="Utils\Concurrency\Task.cs" />
-    <Compile Include="Utils\DateTimes\SimilarDateTimeComparer.cs" />
     <Compile Include="Utils\EqualityUtils.cs" />
     <Compile Include="Utils\Exceptions\ConsoleLogger.cs" />
     <Compile Include="Utils\Exceptions\Execute.cs" />
