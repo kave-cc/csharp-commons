@@ -38,13 +38,13 @@ namespace KaVE.Commons.Tests.Utils.Json.JsonSerializationSuite
                         Project = "SomeProject",
                         ProjectConfiguration = "SomeConfiguration",
                         SolutionConfiguration = "SomeOtherConfiguration",
-                        StartedAt = new DateTime(2014, 01, 01, 13, 45, 54),
+                        StartedAt = new DateTimeOffset(2014, 01, 01, 13, 45, 54, TimeSpan.FromHours(-5)),
                         Successful = true
                     }
                 }
             };
             const string expected =
-                "{\"$type\":\"KaVE.Commons.Model.Events.VisualStudio.BuildEvent, KaVE.Commons\",\"Scope\":\"SomeScope\",\"Action\":\"SomeAction\",\"Targets\":[{\"$type\":\"KaVE.Commons.Model.Events.VisualStudio.BuildTarget, KaVE.Commons\",\"Project\":\"SomeProject\",\"ProjectConfiguration\":\"SomeConfiguration\",\"Platform\":\"SomePlatform\",\"SolutionConfiguration\":\"SomeOtherConfiguration\",\"StartedAt\":\"2014-01-01T13:45:54\",\"Duration\":\"00:00:01\",\"Successful\":true}],\"TriggeredBy\":0}";
+                "{\"$type\":\"KaVE.Commons.Model.Events.VisualStudio.BuildEvent, KaVE.Commons\",\"Scope\":\"SomeScope\",\"Action\":\"SomeAction\",\"Targets\":[{\"$type\":\"KaVE.Commons.Model.Events.VisualStudio.BuildTarget, KaVE.Commons\",\"Project\":\"SomeProject\",\"ProjectConfiguration\":\"SomeConfiguration\",\"Platform\":\"SomePlatform\",\"SolutionConfiguration\":\"SomeOtherConfiguration\",\"StartedAt\":\"2014-01-01T13:45:54-05:00\",\"Duration\":\"00:00:01\",\"Successful\":true}],\"TriggeredBy\":0}";
 
             JsonAssert.SerializesTo(e, expected);
             JsonAssert.DeserializesTo(expected, e);

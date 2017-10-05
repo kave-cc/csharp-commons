@@ -80,8 +80,9 @@ namespace KaVE.Commons.Tests.Utils.Json.JsonSerializationSuite
         {
             return "{\"$type\":\"KaVE.Commons.Model.Events.VersionControlEvents.VersionControlEvent, KaVE.Commons\"," +
                    "\"Actions\":[" +
-                   /**/ "{\"$type\":\"KaVE.Commons.Model.Events.VersionControlEvents.VersionControlAction, KaVE.Commons\"," +
-                   /**/ "\"ExecutedAt\":\"0001-01-01T00:00:01\"," +
+                   /**/
+                   "{\"$type\":\"KaVE.Commons.Model.Events.VersionControlEvents.VersionControlAction, KaVE.Commons\"," +
+                   /**/ "\"ExecutedAt\":\"0001-01-01T01:01:01-03:00\"," +
                    /**/ "\"ActionType\":3}" +
                    "]," +
                    "\"Solution\":\"0Sln:Some Solution\"," +
@@ -89,9 +90,9 @@ namespace KaVE.Commons.Tests.Utils.Json.JsonSerializationSuite
                    "}";
         }
 
-        private static DateTime GetDate(int secs)
+        private static DateTimeOffset GetDate(int secs)
         {
-            return DateTime.MinValue.AddSeconds(secs);
+            return new DateTimeOffset(1, 1, 1, 1, 1, 1, 0, TimeSpan.FromHours(-3));
         }
     }
 }

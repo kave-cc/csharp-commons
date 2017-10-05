@@ -23,14 +23,14 @@ namespace KaVE.Commons.Tests.Model.Events.VersionControlEvents
 {
     internal class VersionControlActionTest
     {
-        private static readonly DateTime SomeDateTime = new DateTime(903492580);
+        private static readonly DateTimeOffset SomeDateTime = DateTimeOffset.Now;
         private const VersionControlActionType SomeGitAction = VersionControlActionType.Commit;
 
         [Test]
         public void DefaultValues()
         {
             var uut = new VersionControlAction();
-            Assert.AreEqual(new DateTime(), uut.ExecutedAt);
+            Assert.AreEqual(new DateTimeOffset(), uut.ExecutedAt);
             Assert.AreEqual(VersionControlActionType.Unknown, uut.ActionType);
         }
 
