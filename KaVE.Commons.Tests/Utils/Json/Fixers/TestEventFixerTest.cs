@@ -177,6 +177,14 @@ namespace KaVE.Commons.Tests.Utils.Json.Fixers
         }
 
         [Test]
+        public void RegressionTestOfFixingTimingError_broken_plusone_differentParsingFunction()
+        {
+            var actual = Full_BrokenPlusOne.ParseJsonTo(typeof(TestRunEvent));
+            var expected = Full_BrokenPlusOne.ParseJsonTo(typeof(TestRunEvent));
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
         public void RegressionTestOfFixingTimingError_broken_pluseight()
         {
             var actual = BrokenPlusEight.ParseJsonTo<TestRunEvent>();
