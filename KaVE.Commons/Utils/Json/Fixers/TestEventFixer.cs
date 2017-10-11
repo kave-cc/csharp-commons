@@ -30,6 +30,11 @@ namespace KaVE.Commons.Utils.Json.Fixers
                 return obj;
             }
 
+            if (e.Tests.Count == 0)
+            {
+                return obj;
+            }
+
             var eventStart = e.TriggeredAt;
             var testStart = e.Tests.First().StartTime;
 

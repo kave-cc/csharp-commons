@@ -207,5 +207,13 @@ namespace KaVE.Commons.Tests.Utils.Json.Fixers
             var expected = FixedDisagreement.ParseJsonTo<TestRunEvent>();
             Assert.AreEqual(expected, actual);
         }
+
+        [Test]
+        public void Regression_EmptyListDoesNotCrashFixer()
+        {
+            var eIn = new TestRunEvent();
+            var eOut = eIn.ToCompactJson().ParseJsonTo<TestRunEvent>();
+            Assert.AreEqual(eIn, eOut);
+        }
     }
 }
