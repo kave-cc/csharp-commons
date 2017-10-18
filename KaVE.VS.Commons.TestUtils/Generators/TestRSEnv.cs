@@ -14,30 +14,25 @@
  * limitations under the License.
  */
 
-using System;
+using KaVE.VS.Commons.Generators;
 
-namespace KaVE.Commons.Utils
+namespace KaVE.VS.Commons.TestUtils.Generators
 {
-    public interface IDateUtils
+    public class TestRSEnv : IRSEnv
     {
-        DateTimeOffset Now { get; }
-        DateTimeOffset Today { get; }
-    }
-
-    public class DateUtils : IDateUtils
-    {
-        public DateTimeOffset Now
+        public string DefaultVersion
         {
-            get { return DateTimeOffset.Now; }
+            get { return "1.2-test"; }
         }
 
-        public DateTimeOffset Today
+        public TestRSEnv(IIDESession session)
         {
-            get
-            {
-                var n = Now;
-                return new DateTimeOffset(n.Year, n.Month, n.Day, 0, 0, 0, n.Offset);
-            }
+            IDESession = session;
+            KaVEVersion = DefaultVersion;
         }
+
+        public string KaVEVersion { get; set; }
+
+        public IIDESession IDESession { get; }
     }
 }

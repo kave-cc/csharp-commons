@@ -14,30 +14,17 @@
  * limitations under the License.
  */
 
-using System;
+using NUnit.Framework;
 
-namespace KaVE.Commons.Utils
+namespace KaVE.VS.Commons.Tests
 {
-    public interface IDateUtils
+    [Ignore("Move from RS.Commons test, once activation issue is solved in VS.Commons.")]
+    internal class RegistryTest
     {
-        DateTimeOffset Now { get; }
-        DateTimeOffset Today { get; }
-    }
-
-    public class DateUtils : IDateUtils
-    {
-        public DateTimeOffset Now
+        [Test]
+        public void ImplementMe()
         {
-            get { return DateTimeOffset.Now; }
-        }
-
-        public DateTimeOffset Today
-        {
-            get
-            {
-                var n = Now;
-                return new DateTimeOffset(n.Year, n.Month, n.Day, 0, 0, 0, n.Offset);
-            }
+            Assert.Fail();
         }
     }
 }

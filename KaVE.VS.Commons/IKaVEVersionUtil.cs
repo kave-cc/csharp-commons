@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2014 Technische Universität Darmstadt
+ * Copyright 2017 University of Zurich
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,15 @@
  */
 
 using System;
+using KaVE.Commons.Model;
 
-namespace KaVE.Commons.Utils
+namespace KaVE.VS.Commons
 {
-    public interface IDateUtils
+    // ReSharper disable once InconsistentNaming
+    public interface IKaVEVersionUtil
     {
-        DateTimeOffset Now { get; }
-        DateTimeOffset Today { get; }
-    }
-
-    public class DateUtils : IDateUtils
-    {
-        public DateTimeOffset Now
-        {
-            get { return DateTimeOffset.Now; }
-        }
-
-        public DateTimeOffset Today
-        {
-            get
-            {
-                var n = Now;
-                return new DateTimeOffset(n.Year, n.Month, n.Day, 0, 0, 0, n.Offset);
-            }
-        }
+        Version GetCurrentVersion();
+        string GetCurrentInformalVersion();
+        Variant GetCurrentVariant();
     }
 }

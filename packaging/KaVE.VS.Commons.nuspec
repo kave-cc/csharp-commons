@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
     <metadata>
-        <id>KaVE.Commons.TestUtils</id>
+        <id>KaVE.VS.Commons</id>
         <version>$version$</version>
 
-        <description>Common test utils of the KaVE project.</description>
+        <description>Common interfaces of the KaVE project that are relevant for plugins that extend FeedBaG.</description>
         <authors>KaVE Team</authors>
         <copyright>Copyright 2011-2017</copyright>
     
@@ -12,17 +12,18 @@
         <iconUrl>https://raw.githubusercontent.com/kave-cc/resources/master/images/logo-nuget.png</iconUrl>
         <licenseUrl>https://github.com/kave-cc/resources/blob/master/LICENSE</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        
+
         <dependencies>
             <!-- solution references -->
             <dependency id="KaVE.Commons" version="$version$" />
             <!-- from packages.config -->
-            <dependency id="Moq" version="4.7.142" />
-            <dependency id="NUnit" version="2.6.4" />
+            <dependency id="EnvDTE" version="8.0.1" />
+            <dependency id="Microsoft.VisualStudio.CommandBars" version="8.0.0.0" />
+            <dependency id="JetBrains.ReSharper.SDK" version="2017.1.20170613.162448" />
             <!-- from 3rd-party/non-NuGet? we have to repackage them in the files section -->
-       </dependencies>
+        </dependencies>
     </metadata>
     <files>
-        <file src="..\KaVE.Commons.TestUtils\bin\Debug\KaVE.Commons.TestUtils.dll" target="lib\KaVE.Commons.TestUtils.dll" />
+        <file src="..\KaVE.VS.Commons\bin\Debug\KaVE.VS.Commons.dll" target="lib\KaVE.VS.Commons.dll" />
     </files>
 </package>

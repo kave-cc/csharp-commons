@@ -18,6 +18,7 @@ using System;
 using KaVE.Commons.Model.Events;
 using KaVE.Commons.Model.Naming;
 using KaVE.Commons.TestUtils;
+using KaVE.Commons.Utils;
 using NUnit.Framework;
 
 namespace KaVE.Commons.Tests.Model.Events
@@ -52,8 +53,8 @@ namespace KaVE.Commons.Tests.Model.Events
                 // Duration is automatically set
                 IDESessionUUID = "2",
                 KaVEVersion = "3",
-                TriggeredAt = DateTime.Today.AddDays(-1),
-                TerminatedAt = DateTime.Today,
+                TriggeredAt = new DateUtils().Today.AddDays(-1),
+                TerminatedAt = new DateUtils().Today,
                 TriggeredBy = EventTrigger.Click
             };
             Assert.AreEqual("1", sut.Id);
@@ -62,8 +63,8 @@ namespace KaVE.Commons.Tests.Model.Events
             Assert.AreEqual(TimeSpan.FromDays(1), sut.Duration);
             Assert.AreEqual("2", sut.IDESessionUUID);
             Assert.AreEqual("3", sut.KaVEVersion);
-            Assert.AreEqual((DateTimeOffset)DateTime.Today, sut.TerminatedAt);
-            Assert.AreEqual(((DateTimeOffset)DateTime.Today).AddDays(-1), sut.TriggeredAt);
+            Assert.AreEqual((DateTimeOffset) DateTime.Today, sut.TerminatedAt);
+            Assert.AreEqual(((DateTimeOffset) DateTime.Today).AddDays(-1), sut.TriggeredAt);
             Assert.AreEqual(EventTrigger.Click, sut.TriggeredBy);
         }
 
@@ -181,6 +182,6 @@ namespace KaVE.Commons.Tests.Model.Events
             Assert.IsNull(ideEvent.TerminatedAt);
         }
 
-        private class TestIDEEvent : IDEEvent {}
+        private class TestIDEEvent : IDEEvent { }
     }
 }

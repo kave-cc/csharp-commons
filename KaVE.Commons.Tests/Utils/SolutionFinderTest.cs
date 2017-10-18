@@ -17,13 +17,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using KaVE.Commons.TestUtils.Utils;
 using KaVE.Commons.Utils;
 using KaVE.Commons.Utils.Assertion;
 using KaVE.Commons.Utils.Collections;
 using KaVE.Commons.Utils.Json;
 using NUnit.Framework;
 
-namespace KaVE.Commons.TestUtils.Utils
+namespace KaVE.Commons.Tests.Utils
 {
     internal class SolutionFinderTest
     {

@@ -14,30 +14,26 @@
  * limitations under the License.
  */
 
-using System;
+using EnvDTE;
+using KaVE.VS.Commons.Generators;
+using Moq;
 
-namespace KaVE.Commons.Utils
+namespace KaVE.VS.Commons.TestUtils.Generators
 {
-    public interface IDateUtils
+    public class TestIDESession : IIDESession
     {
-        DateTimeOffset Now { get; }
-        DateTimeOffset Today { get; }
-    }
-
-    public class DateUtils : IDateUtils
-    {
-        public DateTimeOffset Now
+        public TestIDESession()
         {
-            get { return DateTimeOffset.Now; }
+            DTE = Mock.Of<DTE>();
+            Mock.Get(DTE).Setup(dte => dte.ActiveWindow).Returns((Window) null);
+            Mock.Get(DTE).Setup(dte => dte.ActiveDocument).Returns((Document) null);
         }
 
-        public DateTimeOffset Today
+        public string UUID
         {
-            get
-            {
-                var n = Now;
-                return new DateTimeOffset(n.Year, n.Month, n.Day, 0, 0, 0, n.Offset);
-            }
+            get { return "TestIDESessionUUID"; }
         }
+
+        public DTE DTE { get; private set; }
     }
 }

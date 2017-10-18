@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2014 Technische Universität Darmstadt
+ * Copyright 2017 University of Zurich
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,30 +14,14 @@
  * limitations under the License.
  */
 
-using System;
+using EnvDTE;
 
-namespace KaVE.Commons.Utils
+namespace KaVE.VS.Commons.Generators
 {
-    public interface IDateUtils
+    public interface IIDESession
     {
-        DateTimeOffset Now { get; }
-        DateTimeOffset Today { get; }
-    }
+        string UUID { get; }
 
-    public class DateUtils : IDateUtils
-    {
-        public DateTimeOffset Now
-        {
-            get { return DateTimeOffset.Now; }
-        }
-
-        public DateTimeOffset Today
-        {
-            get
-            {
-                var n = Now;
-                return new DateTimeOffset(n.Year, n.Month, n.Day, 0, 0, 0, n.Offset);
-            }
-        }
+        DTE DTE { get; }
     }
 }

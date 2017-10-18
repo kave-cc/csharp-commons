@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
     <metadata>
-        <id>KaVE.Commons.TestUtils</id>
+        <id>KaVE.VS.Commons.TestUtils</id>
         <version>$version$</version>
 
-        <description>Common test utils of the KaVE project.</description>
+        <description>Common test utils of the KaVE project for plugins of FeedBaG.</description>
         <authors>KaVE Team</authors>
         <copyright>Copyright 2011-2017</copyright>
     
@@ -16,6 +16,8 @@
         <dependencies>
             <!-- solution references -->
             <dependency id="KaVE.Commons" version="$version$" />
+            <dependency id="KaVE.Commons.TestUtils" version="$version$" />
+            <dependency id="KaVE.VS.Commons" version="$version$" />
             <!-- from packages.config -->
             <dependency id="Moq" version="4.7.142" />
             <dependency id="NUnit" version="2.6.4" />
@@ -23,6 +25,6 @@
        </dependencies>
     </metadata>
     <files>
-        <file src="..\KaVE.Commons.TestUtils\bin\Debug\KaVE.Commons.TestUtils.dll" target="lib\KaVE.Commons.TestUtils.dll" />
+        <file src="..\KaVE.VS.Commons.TestUtils\bin\Debug\KaVE.VS.Commons.TestUtils.dll" target="lib\KaVE.VS.Commons.TestUtils.dll" />
     </files>
 </package>
