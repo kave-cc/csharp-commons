@@ -20,6 +20,7 @@ using System.Linq;
 using System.Text;
 using KaVE.Commons.Model.Events;
 using KaVE.Commons.Model.Events.CompletionEvents;
+using KaVE.Commons.Model.Events.Enums;
 using KaVE.Commons.Model.Events.TestRunEvents;
 using KaVE.Commons.Model.Events.UserProfiles;
 using KaVE.Commons.Model.Events.VersionControlEvents;
@@ -526,13 +527,13 @@ namespace KaVE.Commons.Tests.Model.Naming
                 }
                 foreach (
                     var paramPart in
-                        new[]
-                        {
-                            "",
-                            "out [?] p",
-                            "[{0}] p".FormatEx(typeId),
-                            "[{0}] p1, [{0}] p2".FormatEx(typeId)
-                        })
+                    new[]
+                    {
+                        "",
+                        "out [?] p",
+                        "[{0}] p".FormatEx(typeId),
+                        "[{0}] p1, [{0}] p2".FormatEx(typeId)
+                    })
                 {
                     GenerateMethodTest(counter, counter2++, new MethodName("{0}({1})".FormatEx(memberBase, paramPart)));
                 }

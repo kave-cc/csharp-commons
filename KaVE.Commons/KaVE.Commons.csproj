@@ -63,14 +63,15 @@
     <Compile Include="Model\Events\NavigationEvent.cs" />
     <Compile Include="Model\Events\ActivityEvent.cs" />
     <Compile Include="Model\Events\TestRunEvents\TestCaseResult.cs" />
+    <Compile Include="Model\Events\Enums\Likert5Point.cs" />
     <Compile Include="Model\Events\VersionControlEvents\VersionControlAction.cs" />
     <Compile Include="Model\Events\VersionControlEvents\VersionControlActionType.cs" />
     <Compile Include="Model\Events\VersionControlEvents\VersionControlEvent.cs" />
     <Compile Include="Model\Events\UserProfiles\Educations.cs" />
-    <Compile Include="Model\Events\UserProfiles\Likert7Point.cs" />
+    <Compile Include="Model\Events\Enums\Likert7Point.cs" />
     <Compile Include="Model\Events\UserProfiles\Positions.cs" />
     <Compile Include="Model\Events\UserProfiles\UserProfileEvent.cs" />
-    <Compile Include="Model\Events\UserProfiles\YesNoUnknown.cs" />
+    <Compile Include="Model\Events\Enums\YesNoUnknown.cs" />
     <Compile Include="Model\Events\SystemEvent.cs" />
     <Compile Include="Model\Events\TestRunEvents\TestRunEvent.cs" />
     <Compile Include="Model\KaVEVersion.cs" />

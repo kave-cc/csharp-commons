@@ -15,6 +15,7 @@
  */
 
 using System.Runtime.Serialization;
+using KaVE.Commons.Model.Events.Enums;
 using KaVE.Commons.Utils;
 using KaVE.JetBrains.Annotations;
 
@@ -119,7 +120,8 @@ namespace KaVE.Commons.Model.Events.UserProfiles
                    ProjectsPersonal == other.ProjectsPersonal && ProjectsSharedSmall == other.ProjectsSharedSmall &&
                    ProjectsSharedMedium == other.ProjectsSharedMedium &&
                    ProjectsSharedLarge == other.ProjectsSharedLarge && TeamsSolo == other.TeamsSolo &&
-                   TeamsSmall == other.TeamsSmall && TeamsMedium == other.TeamsMedium && TeamsLarge == other.TeamsLarge &&
+                   TeamsSmall == other.TeamsSmall && TeamsMedium == other.TeamsMedium &&
+                   TeamsLarge == other.TeamsLarge &&
                    CodeReviews == other.CodeReviews && ProgrammingGeneral == other.ProgrammingGeneral &&
                    ProgrammingCSharp == other.ProgrammingCSharp && string.Equals(Comment, other.Comment);
         }
@@ -129,22 +131,22 @@ namespace KaVE.Commons.Model.Events.UserProfiles
             unchecked
             {
                 var hashCode = base.GetHashCode();
-                hashCode = (hashCode*397) ^ ProfileId.GetHashCode();
-                hashCode = (hashCode*397) ^ (int) Education;
-                hashCode = (hashCode*397) ^ (int) Position;
-                hashCode = (hashCode*397) ^ ProjectsCourses.GetHashCode();
-                hashCode = (hashCode*397) ^ ProjectsPersonal.GetHashCode();
-                hashCode = (hashCode*397) ^ ProjectsSharedSmall.GetHashCode();
-                hashCode = (hashCode*397) ^ ProjectsSharedMedium.GetHashCode();
-                hashCode = (hashCode*397) ^ ProjectsSharedLarge.GetHashCode();
-                hashCode = (hashCode*397) ^ TeamsSolo.GetHashCode();
-                hashCode = (hashCode*397) ^ TeamsSmall.GetHashCode();
-                hashCode = (hashCode*397) ^ TeamsMedium.GetHashCode();
-                hashCode = (hashCode*397) ^ TeamsLarge.GetHashCode();
-                hashCode = (hashCode*397) ^ (int) CodeReviews;
-                hashCode = (hashCode*397) ^ (int) ProgrammingGeneral;
-                hashCode = (hashCode*397) ^ (int) ProgrammingCSharp;
-                hashCode = (hashCode*397) ^ Comment.GetHashCode();
+                hashCode = (hashCode * 397) ^ ProfileId.GetHashCode();
+                hashCode = (hashCode * 397) ^ (int) Education;
+                hashCode = (hashCode * 397) ^ (int) Position;
+                hashCode = (hashCode * 397) ^ ProjectsCourses.GetHashCode();
+                hashCode = (hashCode * 397) ^ ProjectsPersonal.GetHashCode();
+                hashCode = (hashCode * 397) ^ ProjectsSharedSmall.GetHashCode();
+                hashCode = (hashCode * 397) ^ ProjectsSharedMedium.GetHashCode();
+                hashCode = (hashCode * 397) ^ ProjectsSharedLarge.GetHashCode();
+                hashCode = (hashCode * 397) ^ TeamsSolo.GetHashCode();
+                hashCode = (hashCode * 397) ^ TeamsSmall.GetHashCode();
+                hashCode = (hashCode * 397) ^ TeamsMedium.GetHashCode();
+                hashCode = (hashCode * 397) ^ TeamsLarge.GetHashCode();
+                hashCode = (hashCode * 397) ^ (int) CodeReviews;
+                hashCode = (hashCode * 397) ^ (int) ProgrammingGeneral;
+                hashCode = (hashCode * 397) ^ (int) ProgrammingCSharp;
+                hashCode = (hashCode * 397) ^ Comment.GetHashCode();
                 return hashCode;
             }
         }

@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-namespace KaVE.Commons.Model.Events.UserProfiles
+namespace KaVE.Commons.Model.Events.Enums
 {
     public enum Likert7Point
     {
-        Unknown,
+        Unknown = 0,
         Negative3,
         Negative2,
         Negative1,

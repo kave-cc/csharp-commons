@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+using KaVE.Commons.Model.Events.Enums;
 using KaVE.Commons.Model.Events.UserProfiles;
 using KaVE.Commons.TestUtils;
 using NUnit.Framework;

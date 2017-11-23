@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2014 Technische Universität Darmstadt
+ * Copyright 2017 University of Zurich
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,15 @@
  * limitations under the License.
  */
 
-namespace KaVE.Commons.Model.Events.UserProfiles
+namespace KaVE.Commons.Model.Events.Enums
 {
-    public enum YesNoUnknown
+    public enum Likert5Point
     {
-        Unknown,
-        Yes,
-        No
+        Unknown = 0,
+        Negative2,
+        Negative1,
+        Neutral,
+        Positive1,
+        Positive2
     }
 }
