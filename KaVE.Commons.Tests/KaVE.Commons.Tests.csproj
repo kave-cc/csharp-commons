@@ -139,6 +139,8 @@
     <Compile Include="Utils\Json\JsonSerializationSuite\DateTimeSerializationTest.cs" />
     <Compile Include="Utils\Json\JsonSerializationSuite\JsonDeserializationFixerTest.cs" />
     <Compile Include="Utils\Json\JsonSerializationSuite\VersionControlEventSerializationTest.cs" />
+    <Compile Include="Utils\KaVEVersionUtilTestSuite\$(KaVEProduct)Test.cs" />
+    <Compile Include="Utils\KaVEVersionUtilTestSuite\OtherAssemblyTest.cs" />
     <Compile Include="Utils\Naming\AnonymousNameUtilsTest.cs" />
     <Compile Include="Utils\Naming\NameSerializationTest.cs" />
     <Compile Include="Model\Naming\NamesTest.cs" />

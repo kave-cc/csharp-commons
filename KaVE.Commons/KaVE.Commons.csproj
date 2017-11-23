@@ -118,6 +118,7 @@
     <Compile Include="Utils\CodeCompletion\TypePathUtil.cs" />
     <Compile Include="Utils\CultureUtils.cs" />
     <Compile Include="Utils\Exceptions\ValidationException.cs" />
+    <Compile Include="Utils\KaVEVersionUtil.cs" />
     <Compile Include="Utils\Json\Fixers\IDeserializationFixer.cs" />
     <Compile Include="Utils\Json\Fixers\TestEventFixer.cs" />
     <Compile Include="Utils\Naming\AnonymousNameUtils.cs" />

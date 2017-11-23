@@ -247,7 +247,6 @@
     <Compile Include="Generators\EventGeneratorBase.cs" />
     <Compile Include="Generators\GenericCommandGenerator.cs" />
     <Compile Include="Generators\IIDESession.cs" />
-    <Compile Include="IKaVEVersionUtil.cs" />
     <Compile Include="IMessageBus.cs" />
     <Compile Include="Generators\IRSEnv.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
