@@ -25,11 +25,10 @@ namespace KaVE.Commons.Tests.Model.Events.Tasks
         [Test]
         public void DefaultValues()
         {
-            var sut = new TaskEvent("p", "t", TaskAction.Create);
-            Assert.AreEqual("p", sut.Version);
-            Assert.AreEqual("t", sut.TaskId);
+            var sut = new TaskEvent();
+            Assert.AreEqual("", sut.Version);
+            Assert.AreEqual("", sut.TaskId);
             Assert.AreEqual(TaskAction.Create, sut.Action);
-
             Assert.Null(sut.NewParentId);
             Assert.Null(sut.Annoyance);
             Assert.Null(sut.Importance);
@@ -39,17 +38,19 @@ namespace KaVE.Commons.Tests.Model.Events.Tasks
         [Test]
         public void SettingValues()
         {
-            var sut = new TaskEvent("p2", "t2", TaskAction.Activate)
+            var sut = new TaskEvent
             {
+                Version = "1",
+                TaskId = "2",
+                Action = TaskAction.Activate,
                 NewParentId = "x",
                 Annoyance = Likert5Point.Negative1,
                 Importance = Likert5Point.Neutral,
                 Urgency = Likert5Point.Positive1
             };
-            Assert.AreEqual("p2", sut.Version);
-            Assert.AreEqual("t2", sut.TaskId);
+            Assert.AreEqual("1", sut.Version);
+            Assert.AreEqual("2", sut.TaskId);
             Assert.AreEqual(TaskAction.Activate, sut.Action);
-
             Assert.AreEqual("x", sut.NewParentId);
             Assert.AreEqual(Likert5Point.Negative1, sut.Annoyance);
             Assert.AreEqual(Likert5Point.Neutral, sut.Importance);
@@ -59,8 +60,8 @@ namespace KaVE.Commons.Tests.Model.Events.Tasks
         [Test]
         public void Equality_Default()
         {
-            var a = new TaskEvent("p2", "t2", TaskAction.Activate);
-            var b = new TaskEvent("p2", "t2", TaskAction.Activate);
+            var a = new TaskEvent();
+            var b = new TaskEvent();
             Assert.AreEqual(a, b);
             Assert.AreEqual(a.GetHashCode(), b.GetHashCode());
         }
@@ -68,15 +69,21 @@ namespace KaVE.Commons.Tests.Model.Events.Tasks
         [Test]
         public void Equality_SettingValues()
         {
-            var a = new TaskEvent("p2", "t2", TaskAction.Activate)
+            var a = new TaskEvent
             {
+                Version = "1",
+                TaskId = "2",
+                Action = TaskAction.Activate,
                 NewParentId = "x",
                 Annoyance = Likert5Point.Negative1,
                 Importance = Likert5Point.Neutral,
                 Urgency = Likert5Point.Positive1
             };
-            var b = new TaskEvent("p2", "t2", TaskAction.Activate)
+            var b = new TaskEvent
             {
+                Version = "1",
+                TaskId = "2",
+                Action = TaskAction.Activate,
                 NewParentId = "x",
                 Annoyance = Likert5Point.Negative1,
                 Importance = Likert5Point.Neutral,
@@ -89,8 +96,11 @@ namespace KaVE.Commons.Tests.Model.Events.Tasks
         [Test]
         public void Equality_DifferentVersion()
         {
-            var a = new TaskEvent("p", "t", TaskAction.Activate);
-            var b = new TaskEvent("p2", "t", TaskAction.Activate);
+            var a = new TaskEvent
+            {
+                Version = "1"
+            };
+            var b = new TaskEvent();
             Assert.AreNotEqual(a, b);
             Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode());
         }
@@ -98,8 +108,11 @@ namespace KaVE.Commons.Tests.Model.Events.Tasks
         [Test]
         public void Equality_DifferentTask()
         {
-            var a = new TaskEvent("p", "t", TaskAction.Activate);
-            var b = new TaskEvent("p", "t2", TaskAction.Activate);
+            var a = new TaskEvent
+            {
+                TaskId = "2"
+            };
+            var b = new TaskEvent();
             Assert.AreNotEqual(a, b);
             Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode());
         }
@@ -107,8 +120,11 @@ namespace KaVE.Commons.Tests.Model.Events.Tasks
         [Test]
         public void Equality_DifferentAction()
         {
-            var a = new TaskEvent("p", "t", TaskAction.Activate);
-            var b = new TaskEvent("p", "t", TaskAction.Pause);
+            var a = new TaskEvent
+            {
+                Action = TaskAction.Activate
+            };
+            var b = new TaskEvent();
             Assert.AreNotEqual(a, b);
             Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode());
         }
@@ -116,11 +132,11 @@ namespace KaVE.Commons.Tests.Model.Events.Tasks
         [Test]
         public void Equality_DifferentParent()
         {
-            var a = new TaskEvent("p", "t", TaskAction.Activate)
+            var a = new TaskEvent
             {
                 NewParentId = "x"
             };
-            var b = new TaskEvent("p", "t", TaskAction.Activate);
+            var b = new TaskEvent();
             Assert.AreNotEqual(a, b);
             Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode());
         }
@@ -128,11 +144,11 @@ namespace KaVE.Commons.Tests.Model.Events.Tasks
         [Test]
         public void Equality_DifferentDifferentAnnoyance()
         {
-            var a = new TaskEvent("p", "t", TaskAction.Activate)
+            var a = new TaskEvent
             {
                 Annoyance = Likert5Point.Negative1
             };
-            var b = new TaskEvent("p", "t", TaskAction.Activate);
+            var b = new TaskEvent();
             Assert.AreNotEqual(a, b);
             Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode());
         }
@@ -140,11 +156,11 @@ namespace KaVE.Commons.Tests.Model.Events.Tasks
         [Test]
         public void Equality_DifferentImportance()
         {
-            var a = new TaskEvent("p", "t", TaskAction.Activate)
+            var a = new TaskEvent
             {
                 Importance = Likert5Point.Neutral
             };
-            var b = new TaskEvent("p", "t", TaskAction.Activate);
+            var b = new TaskEvent();
             Assert.AreNotEqual(a, b);
             Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode());
         }
@@ -152,11 +168,11 @@ namespace KaVE.Commons.Tests.Model.Events.Tasks
         [Test]
         public void Equality_DifferentUrgency()
         {
-            var a = new TaskEvent("p", "t", TaskAction.Activate)
+            var a = new TaskEvent
             {
                 Urgency = Likert5Point.Positive1
             };
-            var b = new TaskEvent("p", "t", TaskAction.Activate);
+            var b = new TaskEvent();
             Assert.AreNotEqual(a, b);
             Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode());
         }

@@ -59,11 +59,10 @@ namespace KaVE.Commons.Model.Events.Tasks
     [DataContract]
     public class TaskEvent : IDEEvent, ITaskEvent
     {
-        public TaskEvent(string version, string taskId, TaskAction action)
+        public TaskEvent()
         {
-            Version = version;
-            TaskId = taskId;
-            Action = action;
+            Version = "";
+            TaskId = "";
         }
 
         [DataMember]
