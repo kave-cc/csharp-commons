@@ -17,7 +17,7 @@
 using System.Text.RegularExpressions;
 using KaVE.Commons.Utils.Json;
 
-namespace KaVE.Commons.Utils.CodeCompletion.Impl
+namespace KaVE.Commons.Utils.CodeCompletion
 {
     public class TypePathUtil
     {

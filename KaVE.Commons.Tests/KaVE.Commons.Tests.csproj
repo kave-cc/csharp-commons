@@ -25,7 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -56,9 +56,6 @@
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework" />
-    <Reference Include="smilenet, Version=1.1.4431.20499, Culture=neutral">
-      <HintPath>..\packages\SmileNet.1.0.0\lib\smilenet.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -240,12 +237,6 @@
     <Compile Include="Model\TypeShapes\TypeShapeTest.cs" />
     <Compile Include="ExternalSerializationTests\TestCaseProviderTest.cs" />
     <Compile Include="Utils\Assertion\AssertsTest.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\ExamplePBNRecommenderTest.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\SmileNetworkUtilsTest.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\SmilePBNRecommenderConstantsTest.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\SmilePBNRecommenderStoreTest.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\SmilePBNRecommenderFixture.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\SmilePBNRecommenderTest.cs" />
     <Compile Include="Utils\CodeCompletion\TypePathUtilTest.cs" />
     <Compile Include="Utils\Collections\FifoCacheTest.cs" />
     <Compile Include="Utils\Collections\ListsTest.cs" />

@@ -20,7 +20,6 @@
             <dependency id="DotNetZip.Reduced" version="1.9.1.8" />
             <dependency id="Newtonsoft35.Json" version="7.0.1" />
             <dependency id="SharpZipLib.JetBrains.Stripped" version="0.87.20161027.6" />
-            <dependency id="SmileNet" version="1.0.0" />
             <!-- from 3rd-party/non-NuGet? we have to repackage them in the files section -->
         </dependencies>
     </metadata>

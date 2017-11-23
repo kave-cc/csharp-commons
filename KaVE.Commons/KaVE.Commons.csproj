@@ -48,9 +48,6 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="smilenet, Version=1.1.4431.20499, Culture=neutral">
-      <HintPath>..\packages\SmileNet.1.0.0\lib\smilenet.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -115,6 +112,7 @@
     <Compile Include="Model\TypeShapes\IMemberHierarchy.cs" />
     <Compile Include="Model\TypeShapes\EventHierarchy.cs" />
     <Compile Include="Model\TypeShapes\PropertyHierarchy.cs" />
+    <Compile Include="Utils\CodeCompletion\TypePathUtil.cs" />
     <Compile Include="Utils\CultureUtils.cs" />
     <Compile Include="Utils\Exceptions\ValidationException.cs" />
     <Compile Include="Utils\Json\Fixers\IDeserializationFixer.cs" />
@@ -148,14 +146,8 @@
     <Compile Include="Model\SSTs\References\IIndexAccessReference.cs" />
     <Compile Include="Model\SSTs\Statements\IEventSubscriptionStatement.cs" />
     <Compile Include="Properties\JetBrainsAnnotations.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\ExamplePBNRecommender.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\SmileNetworkUtils.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\TypePathUtil.cs" />
     <Compile Include="Utils\CodeCompletion\IPBNRecommenderStore.cs" />
     <Compile Include="Utils\CodeCompletion\IPBNRecommender.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\SmilePBNRecommenderConstants.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\SmilePBNRecommenderStore.cs" />
-    <Compile Include="Utils\CodeCompletion\Impl\SmilePBNRecommender.cs" />
     <Compile Include="Utils\Collections\ComparisonResult.cs" />
     <Compile Include="Utils\Collections\Multiset.cs" />
     <Compile Include="Utils\Collections\FifoCache.cs" />

@@ -15,7 +15,7 @@
  */
 
 using KaVE.Commons.Model.ObjectUsage;
-using KaVE.Commons.Utils.CodeCompletion.Impl;
+using KaVE.Commons.Utils.CodeCompletion;
 using NUnit.Framework;
 
 namespace KaVE.Commons.Tests.Utils.CodeCompletion
