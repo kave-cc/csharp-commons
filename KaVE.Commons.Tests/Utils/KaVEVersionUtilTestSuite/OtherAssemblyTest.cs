@@ -34,23 +34,23 @@ namespace KaVE.Commons.Tests.Utils.KaVEVersionUtilTestSuite
         [Test]
         public void GetInformalVersion()
         {
-            var actual = _sut.GetAssemblyInformalVersionByContainedType<int>();
-            const string expected = "4.7.2115.0";
+            var actual = _sut.GetAssemblyInformalVersionByContainedType<Assert>();
+            const string expected = "2.6.4.14350";
             Assert.AreEqual(expected, actual);
         }
 
         [Test]
         public void GetVariant()
         {
-            var actual = _sut.GetAssemblyVariantByContainedType<int>();
+            var actual = _sut.GetAssemblyVariantByContainedType<Assert>();
             Assert.AreEqual(Variant.Unknown, actual);
         }
 
         [Test]
         public void GetVersion()
         {
-            var actual = _sut.GetAssemblyVersionByContainedType<int>();
-            var expected = new Version(4, 0, 0, 0);
+            var actual = _sut.GetAssemblyVersionByContainedType<Assert>();
+            var expected = new Version(2, 6, 4, 14350);
             Assert.AreEqual(expected, actual);
         }
     }
