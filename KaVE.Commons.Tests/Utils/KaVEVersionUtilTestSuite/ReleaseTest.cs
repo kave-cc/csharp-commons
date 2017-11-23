@@ -51,7 +51,8 @@ namespace KaVE.Commons.Tests.Utils.KaVEVersionUtilTestSuite
             var actual = _sut.GetAssemblyVersionByContainedType<KaVEVersionUtil>();
             Assert.AreEqual(0, actual.Major);
             Assert.AreEqual(0, actual.Minor);
-            Assert.AreNotEqual(0, actual.Revision);
+            Assert.AreNotEqual(0, actual.Build);
+            Assert.AreEqual(0, actual.Revision);
         }
     }
 }
