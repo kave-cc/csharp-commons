@@ -62,6 +62,8 @@
     <Compile Include="Model\Events\IIDEEvent.cs" />
     <Compile Include="Model\Events\NavigationEvent.cs" />
     <Compile Include="Model\Events\ActivityEvent.cs" />
+    <Compile Include="Model\Events\Tasks\TaskAction.cs" />
+    <Compile Include="Model\Events\Tasks\TaskEvent.cs" />
     <Compile Include="Model\Events\TestRunEvents\TestCaseResult.cs" />
     <Compile Include="Model\Events\Enums\Likert5Point.cs" />
     <Compile Include="Model\Events\VersionControlEvents\VersionControlAction.cs" />
