@@ -25,6 +25,7 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\KaVE.Commons\bin\Debug\KaVE.Commons.dll" target="lib\KaVE.Commons.dll" />
+        <file src="..\KaVE.Commons\bin\Debug\KaVE.Commons.dll" target="lib\" />
+        <file src="install.ps1" target="tools\" />
     </files>
 </package>

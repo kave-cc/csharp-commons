@@ -29,11 +29,9 @@ namespace KaVE.VS.Commons.TestUtils.Generators
             Mock.Get(DTE).Setup(dte => dte.ActiveDocument).Returns((Document) null);
         }
 
-        public string UUID
-        {
-            get { return "TestIDESessionUUID"; }
-        }
+        public DTE DTE { get; }
+        public Mock<DTE> MockDTE => Mock.Get(DTE);
 
-        public DTE DTE { get; private set; }
+        public string UUID => "TestIDESessionUUID";
     }
 }

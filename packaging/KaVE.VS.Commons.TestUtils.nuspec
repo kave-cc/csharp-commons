@@ -25,6 +25,7 @@
        </dependencies>
     </metadata>
     <files>
-        <file src="..\KaVE.VS.Commons.TestUtils\bin\Debug\KaVE.VS.Commons.TestUtils.dll" target="lib\KaVE.VS.Commons.TestUtils.dll" />
+        <file src="..\KaVE.VS.Commons.TestUtils\bin\Debug\KaVE.VS.Commons.TestUtils.dll" target="lib\" />
+        <file src="install.ps1" target="tools\" />
     </files>
 </package>
