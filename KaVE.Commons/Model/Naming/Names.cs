@@ -35,10 +35,16 @@ namespace KaVE.Commons.Model.Naming
     /// </summary>
     public class Names
     {
+
         [NotNull]
         public static IName General(string id, params object[] args)
         {
-            return args.Length == 0 ? new GeneralName(id) : new GeneralName(string.Format(id, args));
+            return new GeneralName(FormatIf(id, args));
+        }
+
+        private static string FormatIf(string id, object[] args)
+        {
+            return args.Length == 0 ? id : string.Format(id, args);
         }
 
         #region code elements
@@ -97,42 +103,42 @@ namespace KaVE.Commons.Model.Naming
 
         public static ICommandBarControlName CommandBarControl(string id, params object[] args)
         {
-            return new CommandBarControlName(string.Format(id, args));
+            return new CommandBarControlName(FormatIf(id, args));
         }
 
         public static ICommandName Command(string id, params object[] args)
         {
-            return args.Length == 0 ? new CommandName(id) : new CommandName(string.Format(id, args));
+            return new CommandName(FormatIf(id, args));
         }
 
         public static IDocumentName Document(string id, params object[] args)
         {
-            return new DocumentName(string.Format(id, args));
+            return new DocumentName(FormatIf(id, args));
         }
 
         public static IProjectItemName ProjectItem(string id, params object[] args)
         {
-            return new ProjectItemName(string.Format(id, args));
+            return new ProjectItemName(FormatIf(id, args));
         }
 
         public static IProjectName Project(string id, params object[] args)
         {
-            return new ProjectName(string.Format(id, args));
+            return new ProjectName(FormatIf(id, args));
         }
 
         public static ISolutionName Solution(string id, params object[] args)
         {
-            return new SolutionName(string.Format(id, args));
+            return new SolutionName(FormatIf(id, args));
         }
 
         public static IWindowName Window(string id, params object[] args)
         {
-            return new WindowName(string.Format(id, args));
+            return new WindowName(FormatIf(id, args));
         }
 
         public static IReSharperLiveTemplateName ReSharperLiveTemplate(string id, params object[] args)
         {
-            return new ReSharperLiveTemplateName(string.Format(id, args));
+            return new ReSharperLiveTemplateName(FormatIf(id, args));
         }
 
         #endregion
@@ -154,7 +160,7 @@ namespace KaVE.Commons.Model.Naming
         [NotNull]
         public static INamespaceName Namespace(string id, params object[] args)
         {
-            return new NamespaceName(string.Format(id, args));
+            return new NamespaceName(FormatIf(id, args));
         }
 
         [NotNull]

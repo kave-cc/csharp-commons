@@ -28,7 +28,7 @@ namespace KaVE.Commons.Model.Naming.Impl.v0.IDEComponents
         {
             if (!"?".Equals(identifier))
             {
-                Asserts.That(identifier.Contains(" "));
+                Asserts.That(identifier.Contains(" "), "id must contain a space");
             }
         }
 

@@ -128,10 +128,66 @@ namespace KaVE.Commons.Tests.Model.Naming
         }
 
         [Test]
+        public void DoesNotBreakForRegularStringsThatDoNotNeedToBeReplaced_CommandBarControl()
+        {
+            var actual = Names.CommandBarControl("{..}");
+            var expected = new CommandBarControlName("{..}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
         public void DoesNotBreakForRegularStringsThatDoNotNeedToBeReplaced_Command()
         {
             var actual = Names.Command("{E272D1B...}:42:SomeId");
             var expected = new CommandName("{E272D1B...}:42:SomeId");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void DoesNotBreakForRegularStringsThatDoNotNeedToBeReplaced_Document()
+        {
+            var actual = Names.Document("CSharp {..}");
+            var expected = new DocumentName("CSharp {..}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void DoesNotBreakForRegularStringsThatDoNotNeedToBeReplaced_ProjectItem()
+        {
+            var actual = Names.ProjectItem("a {..}");
+            var expected = new ProjectItemName("a {..}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void DoesNotBreakForRegularStringsThatDoNotNeedToBeReplaced_Project()
+        {
+            var actual = Names.Project("a {..}");
+            var expected = new ProjectName("a {..}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void DoesNotBreakForRegularStringsThatDoNotNeedToBeReplaced_Solution()
+        {
+            var actual = Names.Solution("{..}");
+            var expected = new SolutionName("{..}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void DoesNotBreakForRegularStringsThatDoNotNeedToBeReplaced_Window()
+        {
+            var actual = Names.Window("a {..}");
+            var expected = new WindowName("a {..}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void DoesNotBreakForRegularStringsThatDoNotNeedToBeReplaced_ReSharperLiveTemplate()
+        {
+            var actual = Names.ReSharperLiveTemplate("a:{..}");
+            var expected = new ReSharperLiveTemplateName("a:{..}");
             Assert.AreEqual(expected, actual);
         }
 

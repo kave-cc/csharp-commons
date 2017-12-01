@@ -16,6 +16,7 @@
 
 using System;
 using KaVE.Commons.Model.Naming.Others;
+using KaVE.Commons.Utils;
 using KaVE.Commons.Utils.Assertion;
 using KaVE.JetBrains.Annotations;
 
@@ -25,13 +26,13 @@ namespace KaVE.Commons.Model.Naming.Impl.v0.Others
     {
         private const string Separator = ":";
 
-        public ReSharperLiveTemplateName() : this(UnknownNameIdentifier) {}
+        public ReSharperLiveTemplateName() : this(UnknownNameIdentifier) { }
 
         public ReSharperLiveTemplateName([NotNull] string identifier) : base(identifier)
         {
             if (!UnknownNameIdentifier.Equals(identifier))
             {
-                Asserts.That(identifier.Contains(Separator));
+                Asserts.That(identifier.Contains(Separator), "id must contain a separator ({0})".FormatEx(Separator));
             }
         }
 
