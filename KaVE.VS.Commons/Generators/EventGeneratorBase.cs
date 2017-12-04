@@ -17,7 +17,7 @@
 using System;
 using System.Diagnostics;
 using EnvDTE;
-using JetBrains.Threading;
+using JetBrains.Application.Threading;
 using KaVE.Commons.Model.Events;
 using KaVE.Commons.Model.Naming.IDEComponents;
 using KaVE.Commons.Utils;

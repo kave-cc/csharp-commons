@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-using JetBrains.Threading;
+using JetBrains.Application.Threading;
 using KaVE.Commons.TestUtils.Model.Events;
 using KaVE.Commons.Utils;
 using KaVE.JetBrains.Annotations;
