@@ -17,9 +17,9 @@
             <!-- solution references -->
             <!-- from packages.config -->
             <dependency id="Antlr4.Runtime.Standard" version="4.7.1" />
-            <dependency id="DotNetZip.Reduced" version="1.9.1.8" />
-            <dependency id="Newtonsoft35.Json" version="7.0.1" />
-            <dependency id="SharpZipLib.JetBrains.Stripped" version="0.87.20161027.6" />
+            <dependency id="DotNetZip" version="1.10.1" />
+            <dependency id="Newtonsoft.Json" version="9.0.1" />
+            <dependency id="JetBrains.SharpZipLib.Stripped" version="0.87.20170720.14" />
             <!-- from 3rd-party/non-NuGet? we have to repackage them in the files section -->
         </dependencies>
     </metadata>
