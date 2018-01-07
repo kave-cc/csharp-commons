@@ -19,6 +19,7 @@ using KaVE.Commons.Model.Events.VersionControlEvents;
 using KaVE.Commons.Model.Naming;
 using KaVE.Commons.Model.Naming.IDEComponents;
 using KaVE.Commons.TestUtils;
+using KaVE.Commons.Utils.Assertion;
 using KaVE.Commons.Utils.Collections;
 using NUnit.Framework;
 
@@ -92,6 +93,55 @@ namespace KaVE.Commons.Tests.Model.Events.VersionControlEvents
         public void ToStringReflection()
         {
             ToStringAssert.Reflection(new VersionControlEvent());
+        }
+
+        [Test]
+        public void SingleAction()
+        {
+            var sut = new VersionControlEvent
+            {
+                Actions =
+                {
+                    new VersionControlAction
+                    {
+                        ActionType = VersionControlActionType.Branch,
+                        ExecutedAt = DateTimeOffset.Now
+                    }
+                }
+            };
+
+            Assert.AreEqual(VersionControlActionType.Branch, sut.ActionTypeOfSingleAction);
+        }
+
+        [Test, ExpectedException(typeof(AssertException))]
+        public void SingleAction_Fail()
+        {
+            var sut = new VersionControlEvent
+            {
+                Actions =
+                {
+                    new VersionControlAction
+                    {
+                        ActionType = VersionControlActionType.Branch,
+                        ExecutedAt = DateTimeOffset.Now
+                    },
+                    new VersionControlAction
+                    {
+                        ActionType = VersionControlActionType.Commit,
+                        ExecutedAt = DateTimeOffset.Now
+                    }
+                }
+            };
+            // ReSharper disable once UnusedVariable
+            var at = sut.ActionTypeOfSingleAction;
+        }
+
+        [Test, ExpectedException(typeof(AssertException))]
+        public void SingleAction_Fail2()
+        {
+            var sut = new VersionControlEvent();
+            // ReSharper disable once UnusedVariable
+            var at = sut.ActionTypeOfSingleAction;
         }
     }
 }
