@@ -38,7 +38,7 @@ namespace KaVE.Commons.TestUtils.Model.Events
         /// <summary>
         /// Creates a random TestIDEEvent. If no trigger date is passed, DateTime.Now is used.
         /// </summary>
-        public static TestIDEEvent SomeEvent(DateTime? triggeredAt = null)
+        public static TestIDEEvent SomeEvent(DateTimeOffset? triggeredAt = null)
         {
             var testIDEEvent = Some<TestIDEEvent>(triggeredAt);
             testIDEEvent.TestProperty = Random.Next().ToString(CultureInfo.InvariantCulture);
@@ -48,11 +48,11 @@ namespace KaVE.Commons.TestUtils.Model.Events
         /// <summary>
         /// Creates a fresh event instance. If no trigger date is passed, DateTime.Now is used.
         /// </summary>
-        public static TEvent Some<TEvent>(DateTime? triggeredAt = null) where TEvent : IDEEvent, new()
+        public static TEvent Some<TEvent>(DateTimeOffset? triggeredAt = null) where TEvent : IDEEvent, new()
         {
             if (triggeredAt == null)
             {
-                triggeredAt = DateTime.Now;
+                triggeredAt = DateTimeOffset.Now;
             }
             return new TEvent {TriggeredAt = triggeredAt};
         }
