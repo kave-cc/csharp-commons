@@ -130,7 +130,18 @@ namespace KaVE.Commons.Utils.Json
             var settings = CreateSerializationSettings();
             // TODO get rid of this special case handling
             json = LegacyDataUtils.UpdateLegacyDataFormats(json, settings);
-            var obj = JsonConvert.DeserializeObject<T>(json, settings);
+            T obj;
+            try
+            {
+                obj = JsonConvert.DeserializeObject<T>(json, settings);
+            }
+            catch (JsonReaderException)
+            {
+                // sometimes, DateTimeOffset serialization is missing offset for unknown reasons
+                json = json.Replace("\"0001-01-01T00:00:00\"", "\"0001-01-01T00:00:00Z\"");
+                // if parsing still does not work, we cannot handle the problem here
+                obj = JsonConvert.DeserializeObject<T>(json, settings);
+            }
             foreach (var f in Fixers)
             {
                 obj = (T) f.Fix(json, obj);

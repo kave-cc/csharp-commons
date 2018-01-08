@@ -15,7 +15,9 @@
  */
 
 using System;
+using System.Linq;
 using KaVE.Commons.Model.Events;
+using KaVE.Commons.Model.Events.TestRunEvents;
 using KaVE.Commons.Utils.Json;
 using NUnit.Framework;
 
@@ -85,6 +87,24 @@ namespace KaVE.Commons.Tests.Utils.Json.JsonSerializationSuite
             var actual = CreateEvent("2017-10-05T18:38:42.285-07:00").TriggeredAt;
             var expected = new DateTimeOffset(2017, 10, 05, 18, 38, 42, 285, TimeSpan.FromHours(-7));
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void RegressionTest_ZeroDeserialization()
+        {
+            var json = @"
+            {
+                ""$type"": ""KaVE.Commons.Model.Events.TestRunEvents.TestRunEvent, KaVE.Commons"",
+                ""TriggeredAt"": ""0001-01-01T00:00:00"",
+                ""Tests"": [ {
+                    ""$type"": ""KaVE.Commons.Model.Events.TestRunEvents.TestCaseResult, KaVE.Commons"",
+                    ""StartTime"": ""0001-01-01T00:00:00""
+                } ]
+            }";
+
+            var obj = json.ParseJsonTo<TestRunEvent>();
+            Assert.AreEqual(DateTimeOffset.MinValue, obj.TriggeredAt);
+            Assert.AreEqual(DateTimeOffset.MinValue, obj.Tests.First().StartTime);
         }
     }
 }
