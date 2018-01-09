@@ -260,11 +260,48 @@ namespace KaVE.Commons.Model.Naming.Impl.v0
             {
                 "System.Collections.Generic.SortedDictionary`2+KeyCollection, System, 4.0.0.0",
                 "System.Collections.Generic.SortedDictionary`2[[TKey],[TValue]]+KeyCollection, System, 4.0.0.0"
+            },
+            {
+                "System.Collections.Generic.Dictionary`2+ValueCollection, mscorlib, 2.0.0.0",
+                "System.Collections.Generic.Dictionary`2[[TKey],[TValue]]+ValueCollection, mscorlib, 2.0.0.0"
+            },
+            {
+                "s:System.Collections.Generic.HashSet`1+Enumerator, System.Core, 4.0.0.0",
+                "s:System.Collections.Generic.HashSet`1[[T]]+Enumerator, System.Core, 4.0.0.0"
+            },
+            {
+                "System.Collections.Generic.SortedDictionary`2+ValueCollection, System, 4.0.0.0",
+                "System.Collections.Generic.SortedDictionary`2[[TKey],[TValue]]+ValueCollection, System, 4.0.0.0"
+            },
+            {
+                "s:System.Windows.FreezableCollection`1+Enumerator, PresentationCore, 4.0.0.0",
+                "s:System.Windows.FreezableCollection`1[[T]]+Enumerator, PresentationCore, 4.0.0.0"
+            },
+            {
+                "s:System.Collections.Generic.LinkedList`1+Enumerator, System, 2.0.0.0",
+                "s:System.Collections.Generic.LinkedList`1[[T]]+Enumerator, System, 2.0.0.0"
+            },
+            {
+                "System.Collections.Immutable.ImmutableArray`1+Builder, System.Collections.Immutable, 1.1.36.0",
+                "System.Collections.Immutable.ImmutableArray`1[[T]]+Builder, System.Collections.Immutable, 1.1.36.0"
+            },
+            {
+                "System.Collections.Immutable.ImmutableArray`1+Builder, System.Collections.Immutable, 1.1.37.0",
+                "System.Collections.Immutable.ImmutableArray`1[[T]]+Builder, System.Collections.Immutable, 1.1.37.0"
+            },
+            {
+                "System.Runtime.CompilerServices.ConditionalWeakTable`2+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0",
+                "System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0"
+            },
+            {
+                "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)",
+                "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)"
             }
         };
 
         // second (non) numbers at the end are req, because -for some reason- regex ist not greedy
         private static readonly Regex IsLegacyTypeParameterListMatcher = new Regex("([^+.]+`([0-9]+))[^0-9\\[]");
+
         private static readonly Regex AllLegacyTypeParameterLists = new Regex("([^+.]+`([0-9]+))[^0-9]");
 
         // initially, we used markers on the types (e.g., T`1) and only had a single typeParameterList at the end
