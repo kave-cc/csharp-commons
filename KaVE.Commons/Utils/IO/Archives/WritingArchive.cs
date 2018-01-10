@@ -21,13 +21,15 @@ using System.Text;
 using ICSharpCode.SharpZipLib.Zip;
 using KaVE.Commons.Utils.Assertion;
 using KaVE.Commons.Utils.Json;
+using KaVE.JetBrains.Annotations;
 
 namespace KaVE.Commons.Utils.IO.Archives
 {
     public interface IWritingArchive : IDisposable
     {
         int NumItemsAdded { get; }
-        void Add<T>(T obj);
+        void Add<T>([NotNull] T obj);
+        void AddAsPlainText([NotNull] string s);
         void AddAll<T>(IEnumerable<T> entries);
     }
 
@@ -56,12 +58,22 @@ namespace KaVE.Commons.Utils.IO.Archives
 
         public void Add<T>(T obj)
         {
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             if (obj != null)
+            {
+                var json = obj.ToCompactJson();
+                AddAsPlainText(json);
+            }
+        }
+
+        public void AddAsPlainText(string s)
+        {
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+            if (s != null)
             {
                 InitZipIfRequired();
 
-                var json = obj.ToCompactJson();
-                var bytes = Encoding.UTF8.GetBytes(json);
+                var bytes = Encoding.UTF8.GetBytes(s);
                 var fileName = "{0}.json".FormatEx(NumItemsAdded++);
 
                 _zos.PutNextEntry(new ZipEntry(fileName) {Size = bytes.Length});

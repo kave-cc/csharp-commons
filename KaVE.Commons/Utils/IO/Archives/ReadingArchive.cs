@@ -29,6 +29,7 @@ namespace KaVE.Commons.Utils.IO.Archives
         int Count { get; }
         bool HasNext();
         T GetNext<T>();
+        string GetNextAsPlainText();
         IList<T> GetAll<T>();
     }
 
@@ -107,10 +108,17 @@ namespace KaVE.Commons.Utils.IO.Archives
 
         public T GetNext<T>()
         {
+            var json = GetNextAsPlainText();
+            var obj = json.ParseJsonTo<T>();
+            return obj;
+        }
+
+        public string GetNextAsPlainText()
+        {
             Asserts.That(HasNext());
-            var json = _nextJson;
+            var s = _nextJson;
             FindNextUsableEntry();
-            return json.ParseJsonTo<T>();
+            return s;
         }
 
         public IList<T> GetAll<T>()

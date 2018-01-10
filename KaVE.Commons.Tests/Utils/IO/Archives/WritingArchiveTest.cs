@@ -136,6 +136,12 @@ namespace KaVE.Commons.Tests.Utils.IO.Archives
             Assert.False(File.Exists(_zipPath));
         }
 
+        [Test]
+        public void WriteAsPlainText()
+        {
+            // see integration test at ReadingArchiveTest.ReadAsPlainText
+        }
+
         private void Write(params string[] entries)
         {
             using (var sut = new WritingArchive(_zipPath))

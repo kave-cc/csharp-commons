@@ -41,7 +41,7 @@ namespace KaVE.Commons.Tests.Utils.IO.Archives
         [TearDown]
         public void TearDown()
         {
-            _sut.Dispose();
+            _sut?.Dispose();
         }
 
         [Test, ExpectedException(typeof(AssertException))]
@@ -177,6 +177,29 @@ namespace KaVE.Commons.Tests.Utils.IO.Archives
             var actual = _sut.GetAll<string>();
             var expected = new List<string> {"a", "b"};
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void ReadAsPlainText()
+        {
+            using (var wa = new WritingArchive(_zipPath))
+            {
+                wa.AddAsPlainText("x");
+                wa.AddAsPlainText("y");
+                wa.AddAsPlainText("z");
+            }
+
+            var actuals = new List<string>();
+            using (var ra = new ReadingArchive(_zipPath))
+            {
+                while (ra.HasNext())
+                {
+                    actuals.Add(ra.GetNextAsPlainText());
+                }
+            }
+
+            var expecteds = new[] {"x", "y", "z"};
+            CollectionAssert.AreEqual(expecteds, actuals);
         }
 
         private void PrepareZip(params string[] entries)
