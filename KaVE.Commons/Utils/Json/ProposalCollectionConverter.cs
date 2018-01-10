@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using KaVE.Commons.Model.Events.CompletionEvents;
 using KaVE.Commons.Model.Naming;
+using KaVE.Commons.Utils.Exceptions;
 using KaVE.Commons.Utils.Naming;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -73,7 +74,17 @@ namespace KaVE.Commons.Utils.Json
             }
             if (reader.TokenType == JsonToken.StartArray)
             {
-                return new ProposalCollection(serializer.Deserialize<IEnumerable<Proposal>>(reader));
+                try
+                {
+                    return new ProposalCollection(serializer.Deserialize<IEnumerable<Proposal>>(reader));
+                }
+                catch (ValidationException ex)
+                {
+                    Console.WriteLine(
+                        "ValidationException during deserialization of ProposalCollection (array): {0}. Should only happen in legacy data, falling back to empty collection.",
+                        ex.Message);
+                    return new ProposalCollection();
+                }
             }
             throw new JsonSerializationException("expected either array or object to deserialize proposal collection");
         }
