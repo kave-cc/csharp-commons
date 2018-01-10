@@ -15,13 +15,8 @@
  */
 
 using System;
-using System.Collections.Generic;
 using KaVE.Commons.Model.Events.CompletionEvents;
-using KaVE.Commons.Model.Naming;
-using KaVE.Commons.Utils.Exceptions;
-using KaVE.Commons.Utils.Naming;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace KaVE.Commons.Utils.Json
 {
@@ -39,54 +34,35 @@ namespace KaVE.Commons.Utils.Json
         {
             if (reader.TokenType == JsonToken.StartObject)
             {
-                var proposalCollection = JObject.Load(reader);
-                var proposals = proposalCollection.GetValue("Proposals");
-
-                var res = new ProposalCollection();
-                foreach (var proposal in proposals)
-                {
-                    var p = new Proposal();
-
-                    var propObj = (JObject) proposal;
-                    var valName = propObj.GetValue("Name") as JValue;
-                    if (valName != null)
-                    {
-                        var name = valName.Value as string;
-                        if (name != null)
-                        {
-                            p.Name = name.Deserialize<IName>();
-                        }
-                    }
-                    else
-                    {
-                        p.Name = Names.UnknownGeneral;
-                    }
-                    var valRelevance = propObj.GetValue("Relevance") as JValue;
-                    if (valRelevance != null)
-                    {
-                        var relevance = (long) valRelevance.Value;
-                        p.Relevance = unchecked((int) relevance);
-                    }
-
-                    res.Add(p);
-                }
+                reader.Read(); // start obj
+                reader.Read(); // property name ("$type")
+                reader.Read(); // string ("fqn.of.Proposal")
+                reader.Read(); // property name ("Proposals")
+                reader.Read(); // start array
+                var res = ReadAllProposals(reader, serializer);
+                reader.Read(); // end obj
                 return res;
             }
+
             if (reader.TokenType == JsonToken.StartArray)
             {
-                try
-                {
-                    return new ProposalCollection(serializer.Deserialize<IEnumerable<Proposal>>(reader));
-                }
-                catch (ValidationException ex)
-                {
-                    Console.WriteLine(
-                        "ValidationException during deserialization of ProposalCollection (array): {0}. Should only happen in legacy data, falling back to empty collection.",
-                        ex.Message);
-                    return new ProposalCollection();
-                }
+                reader.Read(); // startArr
+                var res = ReadAllProposals(reader, serializer);
+                return res;
             }
             throw new JsonSerializationException("expected either array or object to deserialize proposal collection");
+        }
+
+        private static ProposalCollection ReadAllProposals(JsonReader reader, JsonSerializer serializer)
+        {
+            var res = new ProposalCollection();
+            while (reader.TokenType != JsonToken.EndArray)
+            {
+                var p = serializer.Deserialize<Proposal>(reader);
+                res.Add(p);
+                reader.Read(); // end object
+            }
+            return res;
         }
 
         public override bool CanConvert(Type objectType)

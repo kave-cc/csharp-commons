@@ -36,6 +36,7 @@ namespace KaVE.Commons.Utils.Json
 
         private static void ConfigureConversionOfNonEnumerableProposalCollections(JsonSerializerSettings settings)
         {
+            settings.Converters.Add(new ProposalConverter());
             settings.Converters.Add(new ProposalCollectionConverter());
         }
 
