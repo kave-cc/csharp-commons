@@ -202,6 +202,28 @@ namespace KaVE.Commons.Tests.Utils.IO.Archives
             CollectionAssert.AreEqual(expecteds, actuals);
         }
 
+        [Test]
+        public void LastRead()
+        {
+            using (var wa = new WritingArchive(_zipPath))
+            {
+                wa.AddAsPlainText("x");
+                wa.AddAsPlainText("y");
+                wa.AddAsPlainText("z");
+            }
+
+            using (var ra = new ReadingArchive(_zipPath))
+            {
+                Assert.Null(ra.CurrentInternalFileName);
+                ra.GetNextAsPlainText();
+                Assert.AreEqual("0.json", ra.CurrentInternalFileName);
+                ra.GetNextAsPlainText();
+                Assert.AreEqual("1.json", ra.CurrentInternalFileName);
+                ra.GetNextAsPlainText();
+                Assert.AreEqual("2.json", ra.CurrentInternalFileName);
+            }
+        }
+
         private void PrepareZip(params string[] entries)
         {
             using (var zipFile = new ZipFile())

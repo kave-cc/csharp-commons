@@ -31,13 +31,16 @@ namespace KaVE.Commons.Utils.IO.Archives
         T GetNext<T>();
         string GetNextAsPlainText();
         IList<T> GetAll<T>();
+        string CurrentInternalFileName { get; }
     }
 
     public class ReadingArchive : IReadingArchive
     {
         public int Count { get; private set; }
+        public string CurrentInternalFileName { get; private set; }
 
         private readonly ZipInputStream _zipStream;
+
         private ZipEntry _nextEntry;
         private string _nextJson;
 
@@ -116,9 +119,10 @@ namespace KaVE.Commons.Utils.IO.Archives
         public string GetNextAsPlainText()
         {
             Asserts.That(HasNext());
-            var s = _nextJson;
+            var text = _nextJson;
+            CurrentInternalFileName = _nextEntry.Name;
             FindNextUsableEntry();
-            return s;
+            return text;
         }
 
         public IList<T> GetAll<T>()
