@@ -45,11 +45,11 @@ namespace KaVE.Commons.Utils.Json
             var assemblyName = args.Name;
             if (assemblyName.StartsWith("KaVE.Commons.Model"))
             {
-                return typeof (IName).Assembly;
+                return typeof(IName).Assembly;
             }
             if (assemblyName == "System")
             {
-                return typeof (ISet<>).Assembly;
+                return typeof(ISet<>).Assembly;
             }
             return null;
         }
@@ -117,7 +117,11 @@ namespace KaVE.Commons.Utils.Json
             return json;
         }
 
-        public static ISet<IDeserializationFixer> Fixers = new HashSet<IDeserializationFixer> {new TestEventFixer()};
+        public static ISet<IDeserializationFixer> Fixers = new HashSet<IDeserializationFixer>
+        {
+            new TestEventFixer(),
+            new NegativeDurationFixer()
+        };
 
         /// <summary>
         ///     Parses an instance of <typeparamref name="T" /> from a Json string.
@@ -150,7 +154,7 @@ namespace KaVE.Commons.Utils.Json
         }
 
         /// <summary>
-        ///     Parses an instance of <paramref name="type"/> from a Json string.
+        ///     Parses an instance of <paramref name="type" /> from a Json string.
         /// </summary>
         /// <remarks>
         ///     Uses the same serialization settings as <see cref="ToCompactJson" />.

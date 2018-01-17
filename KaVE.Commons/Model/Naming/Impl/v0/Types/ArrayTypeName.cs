@@ -95,7 +95,7 @@ namespace KaVE.Commons.Model.Naming.Impl.v0.Types
 
         private static readonly Regex UnknownArrayMatcher = new Regex("^\\?\\[,*\\]$");
 
-        internal static bool IsArrayTypeNameIdentifier([NotNull] string id)
+        public static bool IsArrayTypeNameIdentifier([NotNull] string id)
         {
             if (TypeUtils.IsUnknownTypeIdentifier(id))
             {
@@ -144,7 +144,7 @@ namespace KaVE.Commons.Model.Naming.Impl.v0.Types
             var cur = closeBracket;
 
             // regular (multi-dimensional) array
-            while (cur - 1 > 0 && id[--cur] == ',') {}
+            while (cur - 1 > 0 && id[--cur] == ',') { }
             if (id[cur] == '[')
             {
                 return cur;
