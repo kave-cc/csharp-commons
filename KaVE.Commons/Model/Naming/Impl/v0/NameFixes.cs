@@ -168,8 +168,9 @@ namespace KaVE.Commons.Model.Naming.Impl.v0
         };
 
         private static readonly Regex PredefTypesMatcher =
-            new Regex(
-                "(System.(Boolean|Byte|Char|Decimal|Double|Int16|Int32|Int64|Object|SByte|Single|String|UInt16|UInt32|UInt64|Void)((\\[,*\\])?),\\smscorlib,\\s\\d\\.\\d\\.\\d\\.\\d)");
+                new Regex(
+                    "(System.(Boolean|Byte|Char|Decimal|Double|Int16|Int32|Int64|Object|SByte|Single|String|UInt16|UInt32|UInt64|Void)((\\[,*\\])?),\\smscorlib,\\s\\d\\.\\d\\.\\d\\.\\d)")
+            ;
 
         //new Regex("(System.(Boolean|Byte)((\\[,*\\])?),\\smscorlib,\\s\\d\\.\\d\\.\\d\\.\\d)");
 
@@ -290,11 +291,19 @@ namespace KaVE.Commons.Model.Naming.Impl.v0
                 "System.Collections.Immutable.ImmutableArray`1[[T]]+Builder, System.Collections.Immutable, 1.1.37.0"
             },
             {
-                "System.Runtime.CompilerServices.ConditionalWeakTable`2+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0",
-                "System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0"
+                "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)",
+                "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)"
             },
             {
-                "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)",
+                "d:[?][System.Runtime.CompilerServices.ConditionalWeakTable`2 + CreateValueCallback, mscorlib, 4.0.0.0].()",
+                "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)"
+            },
+            {
+                "d:System.Runtime.CompilerServices.ConditionalWeakTable`2+CreateValueCallback, mscorlib, 4.0.0.0",
+                "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)"
+            },
+            {
+                "System.Runtime.CompilerServices.ConditionalWeakTable`2+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0",
                 "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)"
             }
         };

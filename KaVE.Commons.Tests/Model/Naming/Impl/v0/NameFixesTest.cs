@@ -44,10 +44,12 @@ namespace KaVE.Commons.Tests.Model.Naming.Impl.v0
         [TestCase("d:n.D,P", "d:[?] [n.D,P].()"),
          TestCase("T -> d:n.D,P", "T -> d:[?] [n.D,P].()"),
          TestCase("C`1[[T -> d:n.D,P]],P", "C`1[[T -> d:[?] [n.D,P].()]],P"),
-         TestCase("[?] [d:n.D,P].M([?] p)",
+         TestCase(
+             "[?] [d:n.D,P].M([?] p)",
              "[?] [d:[?] [n.D,P].()].M([?] p)"),
          TestCase("C`2[[T -> d:n.D,P],[T -> d:n.D2,P]],P", "C`2[[T -> d:[?] [n.D,P].()],[T -> d:[?] [n.D2,P].()]],P"),
-         TestCase("[d:n.D,P] [d:n.D2,P].M([?] p)",
+         TestCase(
+             "[d:n.D,P] [d:n.D2,P].M([?] p)",
              "[d:[?] [n.D,P].()] [d:[?] [n.D2,P].()].M([?] p)")]
         public void FixesLegacyDelegateTypeNameFormat(string legacy, string corrected)
         {
@@ -60,7 +62,7 @@ namespace KaVE.Commons.Tests.Model.Naming.Impl.v0
          TestCase("N.C1`1[[T1]]+C2[][[T2]],P", "N.C1`1[[T1]]+C2`1[][[T2]],P"),
          TestCase("N.C1`1[[T1]]+C2[,][[T2]],P", "N.C1`1[[T1]]+C2`1[,][[T2]],P"),
          TestCase("N.C1`1[[T1]]+C2[,,][[T2]],P", "N.C1`1[[T1]]+C2`1[,,][[T2]],P"),
-        // artificial example to make sure that a '.' is used in the regexp and not a wildcard
+         // artificial example to make sure that a '.' is used in the regexp and not a wildcard
          TestCase("!C[[T0]], P", "!C[[T0]], P"),
          TestCase("n.C[[T0]], P", "n.C`1[[T0]], P"),
          TestCase("C[[T0]], P", "C`1[[T0]], P")]
@@ -74,7 +76,8 @@ namespace KaVE.Commons.Tests.Model.Naming.Impl.v0
 
         [TestCase("n.T1`1+T2`1[[G1],[G2]], P", "n.T1`1[[G1]]+T2`1[[G2]], P"),
          TestCase("n.T1`1+T2[[G1]], P", "n.T1`1[[G1]]+T2, P"),
-         TestCase("n.T1`1+T2`2+T3`1[[G1 -> P1,P],[G2 -> P2,P],[G3 -> P3, P],[G4 -> P4, P]], P",
+         TestCase(
+             "n.T1`1+T2`2+T3`1[[G1 -> P1,P],[G2 -> P2,P],[G3 -> P3, P],[G4 -> P4, P]], P",
              "n.T1`1[[G1 -> P1,P]]+T2`2[[G2 -> P2,P],[G3 -> P3, P]]+T3`1[[G4 -> P4, P]], P")]
         public void FixesLegacyTypeParameterLists(string legacy, string corrected)
         {
@@ -86,9 +89,10 @@ namespace KaVE.Commons.Tests.Model.Naming.Impl.v0
         // 0M:[s:System.Collections.Generic.List`1[][[[T -> T]]]+Enumerator, mscorlib, 4.0.0.0] .GetEnumerator()
         [TestCase("T`1,P", "T`1,P"), // in general, invalid names are recognized and ignored
          TestCase("T`1!],P", "T`1!],P"), // artificial (invalid) example to test robustness
-         TestCase("System.Collections.Generic.Dictionary`2+KeyCollection, mscorlib, 4.0.0.0",
+         TestCase(
+             "System.Collections.Generic.Dictionary`2+KeyCollection, mscorlib, 4.0.0.0",
              "System.Collections.Generic.Dictionary`2[[TKey],[TValue]]+KeyCollection, mscorlib, 4.0.0.0"),
-        // should not be hit/changed...
+         // should not be hit/changed...
          TestCase("{661F-8B...} SomeClass`1.cs", "{661F-8B...} SomeClass`1.cs"),
          TestCase("vsWindowTypeDocument SomeClass`2.cs", "vsWindowTypeDocument SomeClass`2.cs"),
          TestCase("CSharp SomeClass`2.cs", "CSharp SomeClass`2.cs")]
@@ -115,7 +119,7 @@ namespace KaVE.Commons.Tests.Model.Naming.Impl.v0
         [Ignore, TestCase("[R,P] [D,P]..ctor()", "[System.Void, mscorlib, 4.0.0.0] [D,P]..ctor()"),
          TestCase("[R,P] [D,P]..ctor()", "[System.Void, mscorlib, 4.0.0.0] [D,P]..cctor()"),
          TestCase("[R,P] [D,P].M()", "[R,P] [D,P].M()"),
-        // resilient to parsing issues
+         // resilient to parsing issues
          TestCase("[xxx)", "[xxx)"),
          TestCase("[R,P]xxx)", "[R,P]xxx)"),
          TestCase("[?] [xxx)", "[?] [xxx)"),
@@ -341,11 +345,21 @@ namespace KaVE.Commons.Tests.Model.Naming.Impl.v0
                 new[]
                 {
                     "System.Runtime.CompilerServices.ConditionalWeakTable`2+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0",
-                    "System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0"
+                    "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)"
                 },
                 new[]
                 {
                     "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)",
+                    "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)"
+                },
+                new[]
+                {
+                    "d:[?][System.Runtime.CompilerServices.ConditionalWeakTable`2 + CreateValueCallback, mscorlib, 4.0.0.0].()",
+                    "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)"
+                },
+                new[]
+                {
+                    "d:System.Runtime.CompilerServices.ConditionalWeakTable`2+CreateValueCallback, mscorlib, 4.0.0.0",
                     "d:[TValue] [System.Runtime.CompilerServices.ConditionalWeakTable`2[[TKey],[TValue]]+CreateValueCallback, System.Dynamic.Runtime, 4.0.0.0].([TKey] key)"
                 }
             };
