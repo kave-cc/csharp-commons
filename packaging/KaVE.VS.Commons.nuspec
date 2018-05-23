@@ -19,7 +19,7 @@
             <!-- from packages.config -->
             <dependency id="EnvDTE" version="8.0.1" />
             <dependency id="Microsoft.VisualStudio.CommandBars" version="8.0.0.0" />
-            <dependency id="JetBrains.ReSharper.SDK" version="2017.3.1" />
+            <dependency id="JetBrains.ReSharper.SDK" version="2018.1.0" />
             <!-- from 3rd-party/non-NuGet? we have to repackage them in the files section -->
         </dependencies>
     </metadata>
